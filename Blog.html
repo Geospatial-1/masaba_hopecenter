@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masaba Hope Center Updates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Styles */
+        
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1 class="title">Masaba Hope Center</h1>
+        <p class="description">Events Around You</p>
+    </header>
+
+    <div class="login-section">
+        <input type="password" id="password" placeholder="Enter admin password">
+        <button onclick="login()">Login</button>
+    </div>
+
+    <div class="container">
+        <div class="post-form">
+            <h2>Create New Post</h2>
+            <input type="text" id="postTitle" placeholder="Post Title">
+            <textarea id="postContent" rows="5" placeholder="Post Content"></textarea>
+            <button onclick="createPost()">Publish Post</button>
+        </div>
+
+        <div id="postsContainer"></div>
+    </div>
+
+    <script>
+        // Simple authentication (for demonstration only)
+        const ADMIN_PASSWORD = 'hope123'; // Change this in production
+        let isLoggedIn = false;
+
+        function login() {
+            const password = document.getElementById('password').value;
+            if(password === ADMIN_PASSWORD) {
+                isLoggedIn = true;
+                document.querySelector('.post-form').style.display = 'block';
+                document.querySelector('.login-section').style.display = 'none';
+                loadPosts();
+            }
+        }
+
+        function createPost() {
+            const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
+            const post = {
+                title,
+                content,
+                date: new Date().toLocaleDateString()
+            };
+
+            // Save to localStorage
+            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+            posts.push(post);
+            localStorage.setItem('posts', JSON.stringify(posts));
+
+            // Clear form
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postContent').value = '';
+            
+            loadPosts();
+        }
+
+        function loadPosts() {
+            const postsContainer = document.getElementById('postsContainer');
+            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+            
+            postsContainer.innerHTML = posts.map(post => `
+                <div class="post-card">
+                    <h2>${post.title}</h2>
+                    <p class="post-date">${post.date}</p>
+                    <p>${post.content}</p>
+                </div>
+            `).join('');
+        }
+
+        // Load posts on initial visit
+        loadPosts();
+    </script>
+</body>
+</html>
