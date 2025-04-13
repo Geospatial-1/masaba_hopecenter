@@ -1,277 +1,132 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* General Typography */
 body {
     font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    background-color: #f9f9f9;
+    line-height: 1.8;
     color: #333;
     margin: 0;
-}
-
-/* Header */
-header {
-    position: sticky; /* Make the header sticky */
-    top: 0;
-    z-index: 1000;
-    background-color: #007bff;
-    color: white;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-header .logo-section img {
-    max-width: 100px; /* Adjust logo size */
-    height: auto;
-}
-
-header .title-section {
-    flex: 1;
-    text-align: left;
-    margin-left: 20px;
-}
-
-header .title-section h1 {
-    font-size: 2rem;
-    margin-bottom: 5px;
-}
-
-header .title-section p {
-    font-size: 1rem;
-    opacity: 0.8;
-}
-
-/* Sticky Menu */
-.sticky-menu {
-    position: sticky;
-    top: 0;
-    z-index: 999;
-    background-color: #007bff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    padding: 10px 0;
-}
-
-.sticky-menu ul {
-    list-style: none;
-    margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    background-color: #f9f9f9;
 }
 
-.sticky-menu ul li {
-    display: inline;
-}
-
-.sticky-menu ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.sticky-menu ul li a:hover {
-    background-color: #0056b3;
-    color: #f9f9f9;
-}
-
-/* Mission Section */
-.mission {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.mission .image-overlay img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(50%);
-}
-
-.mission .text-overlay {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    color: white;
-    padding: 20px;
-}
-
-.mission .text-overlay h2 {
-    font-size: 3rem;
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Georgia', serif; /* Use a serif font for headings */
+    color: #007b5e; /* A professional greenish-blue color */
     margin-bottom: 20px;
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-.mission .text-overlay p {
-    font-size: 1.5rem;
-    line-height: 1.8;
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-/* Founder Message Section */
-.founder-message {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 50px 20px;
-    background-color: #f9f9f9;
-    border-top: 5px solid #007b5e;
-    border-bottom: 5px solid #007b5e;
-}
-
-.founder-layout {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    width: 100%;
-    gap: 20px;
-}
-
-.founder-image img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.message-container {
-    flex: 1;
-    padding: 20px;
-    text-align: left;
-}
-
-.message-container h2 {
+h2 {
     font-size: 2.5rem;
-    color: #007b5e;
-    margin-bottom: 20px;
+    text-align: center;
     text-transform: uppercase;
     letter-spacing: 1.5px;
 }
 
-.message-container p {
+h3 {
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+h4, h5, h6 {
+    font-size: 1.5rem;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+/* Paragraphs */
+p {
     font-size: 1.2rem;
     line-height: 1.8;
     margin-bottom: 20px;
+    text-align: justify;
 }
 
-.message-container .call-to-action {
-    font-size: 1.3rem;
-    font-weight: bold;
-    color: #d9534f;
-}
-
-.message-container .signature {
-    font-size: 1.1rem;
-    font-style: italic;
-    color: #555;
-}
-
-/* Donate Button */
-.donate-button {
-    display: inline-block;
-    background-color: yellow;
-    color: black;
-    padding: 15px 30px;
-    font-size: 1.5rem;
+/* Links */
+a {
+    color: #007bff;
     text-decoration: none;
-    border-radius: 5px;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Buttons */
+button, .donate-button {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2rem;
     font-weight: bold;
-    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.donate-button:hover {
+button:hover, .donate-button:hover {
     background-color: #ffd700;
     color: #333;
 }
 
-/* Carousel */
-.carousel {
-    position: relative;
-    width: 100%;
-    max-width: 800px;
-    margin: auto;
-    overflow: hidden;
+/* Section Headings */
+section h2 {
+    font-size: 2.5rem;
+    color: #007b5e;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid #007b5e;
+    display: inline-block;
+    padding-bottom: 5px;
 }
 
-.carousel-container {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+/* Lists */
+ul, ol {
+    margin: 20px 0;
+    padding-left: 40px;
 }
 
-.carousel-slide {
-    min-width: 100%;
-    box-sizing: border-box;
+ul li, ol li {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }
 
-.carousel img {
-    width: 100%;
-    display: block;
+/* Blockquote */
+blockquote {
+    font-size: 1.5rem;
+    font-style: italic;
+    color: #555;
+    border-left: 5px solid #007b5e;
+    padding-left: 15px;
+    margin: 20px 0;
 }
 
-.prev-btn, .next-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
+/* Footer */
+footer {
+    background-color: #333;
     color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 10;
+    text-align: center;
+    padding: 20px;
+    font-size: 1rem;
 }
 
-.prev-btn {
-    left: 10px;
+footer a {
+    color: #ffd700;
+    text-decoration: none;
 }
 
-.next-btn {
-    right: 10px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    header .title-section h1 {
-        font-size: 1.5rem;
-    }
-
-    .sticky-menu ul li a {
-        font-size: 1rem;
-        padding: 8px 15px;
-    }
-
-    .mission .text-overlay h2 {
-        font-size: 2rem;
-    }
-
-    .mission .text-overlay p {
-        font-size: 1.2rem;
-    }
-
-    .founder-layout {
-        flex-direction: column;
-    }
-
-    .founder-image img {
-        max-width: 100%;
-    }
+footer a:hover {
+    color: #fff;
+    text-decoration: underline;
 }
