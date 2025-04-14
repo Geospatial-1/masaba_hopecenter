@@ -12,28 +12,46 @@
     </header>
 
     <main>
-        <form action="https://example.com/submit-donation" method="POST" enctype="multipart/form-data">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required><br>
+        <section class="donation-section">
+            <p>Your generosity helps us provide hope, care, and opportunities to vulnerable children. Choose your preferred donation method below:</p>
+            <form action="https://example.com/submit-donation" method="POST" enctype="multipart/form-data" class="donation-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required><br>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required><br>
 
-            <label for="amount">Amount:</label>
-            <input type="number" id="amount" name="amount" required><br>
+                <label for="amount">Amount (in USD):</label>
+                <input type="number" id="amount" name="amount" placeholder="Enter donation amount" required><br>
 
-            <label for="payment_method">Payment Method:</label>
-            <select id="payment_method" name="payment_method" required>
-                <option value="PayPal">PayPal</option>
-                <option value="Credit Card">Credit Card</option>
-                <option value="Bank Transfer">Bank Transfer</option>
-            </select><br>
+                <label for="payment_method">Payment Method:</label>
+                <select id="payment_method" name="payment_method" required>
+                    <option value="PayPal">PayPal</option>
+                    <option value="Credit Card">Credit Card</option>
+                    <option value="Bank Transfer">Bank Transfer</option>
+                    <option value="M-Pesa">M-Pesa</option>
+                </select><br>
 
-            <label for="proof">Proof of Payment:</label>
-            <input type="file" id="proof" name="proof"><br>
+                <div id="bank-details" class="payment-details">
+                    <h3>Bank Transfer Details</h3>
+                    <p><strong>Bank Name:</strong> Kenya Commercial Bank</p>
+                    <p><strong>Account Name:</strong> Masaba Children  Education & Initiative</p>
+                    <p><strong>Account Number:</strong> 1311904840</p>
+                    <p><strong>SWIFT Code:</strong> KCBLKENX</p>
+                </div>
 
-            <button type="submit">Submit Donation</button>
-        </form>
+                <div id="mpesa-details" class="payment-details">
+                    <h3>M-Pesa Payment Details</h3>
+                    <p><strong>Paybill Number:</strong> 522522</p>
+                    <p><strong>Account Name:</strong> 1311904840r</p>
+                </div>
+
+                <label for="proof">Proof of Payment (optional):</label>
+                <input type="file" id="proof" name="proof"><br>
+
+                <button type="submit">Submit Donation</button>
+            </form>
+        </section>
     </main>
 
     <footer>
