@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Programs - Masaba Hope Center</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+        }
+
+        .program-card img {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .donate-section {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        .donate-section a {
+            background-color: yellow;
+            color: black;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-section a:hover {
+            background-color: #ffd700;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.jpg" alt="Masaba Hope Center Logo" width="50" height="50">
+                Masaba Hope Center
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="programs.html">Programs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ministry.html">Ministry</a></li>
+                    <li class="nav-item"><a class="nav-link" href="donate.html">Donate</a></li>
+                    <li class="nav-item"><a class="nav-link" href="ministrynews.html">Recent Updates</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="header">
+        <h1>Our Programs</h1>
+        <p>Empowering Communities Through Education, Healthcare, and Support</p>
+    </header>
+
+    <!-- Programs Section -->
+    <main class="container py-5">
+        <div class="row">
+            <!-- Program 1 -->
+            <div class="col-md-4 mb-4">
+                <div class="card program-card">
+                    <img src="images/program1.jpeg" class="card-img-top" alt="Education Program">
+                    <div class="card-body">
+                        <h5 class="card-title">Education Program</h5>
+                        <p class="card-text">Providing quality education to underprivileged children to help them build a brighter future.</p>
+                        <a href="education.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Program 2 -->
+            <div class="col-md-4 mb-4">
+                <div class="card program-card">
+                    <img src="images/program2.jpeg" class="card-img-top" alt="Healthcare Program">
+                    <div class="card-body">
+                        <h5 class="card-title">Healthcare Program</h5>
+                        <p class="card-text">Offering essential healthcare services to vulnerable families in our community.</p>
+                        <a href="healthcare.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Program 3 -->
+            <div class="col-md-4 mb-4">
+                <div class="card program-card">
+                    <img src="images/program3.jpeg" class="card-img-top" alt="Women Empowerment">
+                    <div class="card-body">
+                        <h5 class="card-title">Women Empowerment</h5>
+                        <p class="card-text">Empowering women through skill development and entrepreneurship programs.</p>
+                        <a href="women-empowerment.html" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Donate Section -->
+    <section class="donate-section">
+        <p>Your support can help us expand our programs and reach more people in need.</p>
+        <a href="donate.html">Donate Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2025 Masaba Hope Center. All Rights Reserved.</p>
+            <nav>
+                <a href="index.html" class="text-white me-3">Home</a>
+                <a href="about.html" class="text-white me-3">About Us</a>
+                <a href="programs.html" class="text-white me-3">Programs</a>
+                <a href="ministry.html" class="text-white me-3">Ministry</a>
+                <a href="donate.html" class="text-white me-3">Donate</a>
+                <a href="ministrynews.html" class="text-white me-3">Recent Updates</a>
+                <a href="contact.html" class="text-white">Contact Us</a>
+            </nav>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
