@@ -3,128 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry - Masaba Hope Center</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>About Us - Masaba Hope Center</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Styles -->
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+        }
+
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .donate-button {
+            display: inline-block;
+            background-color: yellow;
+            color: black;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .donate-button:hover {
+            background-color: #ffd700;
+        }
+
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* Aspect ratio for 16:9 */
+        }
+
+        .map-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
 </head>
 <body>
-    <!-- Floating Menu -->
-    <nav class="sticky-menu">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="programs.html">Programs</a></li>
-            <li><a href="ministry.html">Ministry</a></li>
-            <li><a href="donate.html">Donate</a></li>
-            <li><a href="blog.html">Updates</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
-    </nav>
-
     <!-- Header Section -->
-    <header class="letterhead">
-        <div class="logo-section">
-            <img src="images/logo.jpg" alt="Masaba Hope Center Logo">
-        </div>
-        <div class="title-section">
-            <h1>Ministry</h1>
-            <p>Spreading Hope and Faith</p>
-        </div>
+    <header class="header">
+        <h1>About Us</h1>
+        <p>Learn more about Masaba Hope Center and our mission to bring hope and change.</p>
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- Reverend's Message Section -->
-        <section class="reverend-message">
-            <div class="reverend-layout">
-                <div class="reverend-image">
-                    <img src="images/founder2.jpeg" alt="Reverend Picture">
-                </div>
-                <div class="message-container">
-                    <h2>Message from Our Reverend</h2>
-                    <p><strong>Dear Brothers and Sisters in Christ,</strong></p>
-                    <p>
-                        As we walk together in faith, let us remember the words of our Lord: <strong>"Truly I tell you, whatever you did for one of the least of these brothers and sisters of mine, you did for me."</strong> (Matthew 25:40). At Masaba Hope Center, we are called to care for the weak, the vulnerable, and the forgotten among us. 
-                    </p>
-                    <p>
-                        Our ministry is dedicated to spreading hope and love through acts of kindness and service. Together, we can uplift those in need and bring light to their lives. Let us continue to be the hands and feet of Christ in this world.
-                    </p>
-                    <p class="signature">In His Service,<br>Reverend John Doe<br>Masaba Hope Center Ministry</p>
+        <!-- About Us Section -->
+        <section class="about-us py-5">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 about-image">
+                        <img src="images/about.jpeg" alt="About Masaba Hope Center" class="img-fluid">
+                    </div>
+                    <div class="col-md-6 about-content">
+                        <h2 class="mb-4">Who We Are</h2>
+                        <p>
+                            Masaba Hope Center is a beacon of hope in a society engulfed by poverty and uncertainty. Located in the heart of Kuria, Migori County, we are a dedicated children's home committed to providing a safe haven for orphaned and vulnerable children. Our mission is to alleviate suffering, restore dignity, and empower the next generation to break free from the cycle of poverty.
+                        </p>
+                        <p>
+                            In a world where many children face unimaginable hardships, Masaba Hope Center stands as a godsend, offering love, care, and opportunities to those who need it most. We believe that every child deserves a chance to dream, to grow, and to thrive.
+                        </p>
+                        <a href="donate.html" class="donate-button mt-3">Donate Now</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Weekly Timetable Section -->
-        <section class="weekly-timetable">
-            <h2>Weekly Church Timetable</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Day</th>
-                        <th>Activity</th>
-                        <th>Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Monday</td>
-                        <td>Prayer Meeting</td>
-                        <td>6:00 PM - 7:30 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Tuesday</td>
-                        <td>Bible Study</td>
-                        <td>6:00 PM - 7:30 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Wednesday</td>
-                        <td>Youth Fellowship</td>
-                        <td>5:00 PM - 6:30 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Thursday</td>
-                        <td>Women's Fellowship</td>
-                        <td>4:00 PM - 5:30 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Friday</td>
-                        <td>Choir Practice</td>
-                        <td>6:00 PM - 7:30 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Saturday</td>
-                        <td>Community Outreach</td>
-                        <td>10:00 AM - 1:00 PM</td>
-                    </tr>
-                    <tr>
-                        <td>Sunday</td>
-                        <td>Sunday Service</td>
-                        <td>9:00 AM - 12:00 PM</td>
-                    </tr>
-                </tbody>
-            </table>
+        <!-- Mission Statement Section -->
+        <section class="mission py-5 bg-light">
+            <div class="container text-center">
+                <h2 class="mb-4">Our Mission</h2>
+                <p class="fs-5">
+                    To provide hope, care, and opportunities for orphaned and vulnerable children in Kuria, Migori County, empowering them to lead successful lives and break the cycle of poverty.
+                </p>
+            </div>
         </section>
 
-        <!-- News Section -->
-        <section class="ministry-news">
-            <h2>Ministry News</h2>
-            <div class="news-content">
-                <img src="images/ministry-news.jpeg" alt="Ministry News">
-                <p>Stay updated with the latest happenings in our ministry. <a href="ministrynews.html">Read more</a>.</p>
+        <!-- Location Map Section -->
+        <section class="location py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Our Location</h2>
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d-122.4194154846813!3d37.77492977975971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80858064f4b0b0b1%3A0x4c5e4c5e4c5e4c5e!2sMasaba%20Hope%20Center!5e0!3m2!1sen!2sus!4v1610000000000!5m2!1sen!2sus" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials py-5 bg-light">
+            <div class="container text-center">
+                <h2 class="mb-4">What People Say</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <blockquote class="blockquote">
+                            <p>"Masaba Hope Center gave me a second chance at life. I am forever grateful!"</p>
+                            <footer class="blockquote-footer">Jane Doe</footer>
+                        </blockquote>
+                    </div>
+                    <div class="col-md-6">
+                        <blockquote class="blockquote">
+                            <p>"The programs here have transformed our community. Thank you!"</p>
+                            <footer class="blockquote-footer">John Smith</footer>
+                        </blockquote>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About Us</a>
-            <a href="programs.html">Programs</a>
-            <a href="ministry.html">Ministry</a>
-            <a href="donate.html">Donate</a>
-            <a href="blog.html">Updates</a>
-            <a href="contact.html">Contact Us</a>
-        </nav>
+    <footer class="bg-dark text-white text-center py-3">
+        <div class="container">
+            <p>&copy; 2025 Masaba Hope Center. All Rights Reserved.</p>
+            <nav>
+                <a href="index.html" class="text-white me-3">Home</a>
+                <a href="programs.html" class="text-white me-3">Programs</a>
+                <a href="ministry.html" class="text-white me-3">Ministry</a>
+                <a href="donate.html" class="text-white me-3">Donate</a>
+                <a href="contact.html" class="text-white">Contact Us</a>
+            </nav>
+        </div>
     </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
