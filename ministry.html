@@ -3,86 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Church Updates</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* CSS Styles */
-        
-    </style>
+    <title>Ministry - Masaba Hope Center</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header class="header">
-        <h1 class="title">In conjunction with Masaba Hope Center</h1>
-        <p class="description">Mission events updates</p>
+    <!-- Floating Menu -->
+    <nav class="sticky-menu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="programs.html">Programs</a></li>
+            <li><a href="ministry.html">Ministry</a></li>
+            <li><a href="donate.html">Donate</a></li>
+            <li><a href="blog.html">Updates</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header Section -->
+    <header class="letterhead">
+        <div class="logo-section">
+            <img src="images/logo.jpg" alt="Masaba Hope Center Logo">
+        </div>
+        <div class="title-section">
+            <h1>Ministry</h1>
+            <p>Spreading Hope and Faith</p>
+        </div>
     </header>
 
-    <div class="login-section">
-        <input type="password" id="password" placeholder="Enter admin password">
-        <button onclick="login()">Login</button>
-    </div>
-
-    <div class="container">
-        <div class="post-form">
-            <h2>Create New Post</h2>
-            <input type="text" id="postTitle" placeholder="Post Title">
-            <textarea id="postContent" rows="5" placeholder="Post Content"></textarea>
-            <button onclick="createPost()">Publish Post</button>
-        </div>
-
-        <div id="postsContainer"></div>
-    </div>
-
-    <script>
-        // Simple authentication (for demonstration only)
-        const ADMIN_PASSWORD = 'hope123'; // Change this in production
-        let isLoggedIn = false;
-
-        function login() {
-            const password = document.getElementById('password').value;
-            if(password === ADMIN_PASSWORD) {
-                isLoggedIn = true;
-                document.querySelector('.post-form').style.display = 'block';
-                document.querySelector('.login-section').style.display = 'none';
-                loadPosts();
-            }
-        }
-
-        function createPost() {
-            const title = document.getElementById('postTitle').value;
-            const content = document.getElementById('postContent').value;
-            const post = {
-                title,
-                content,
-                date: new Date().toLocaleDateString()
-            };
-
-            // Save to localStorage
-            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-            posts.push(post);
-            localStorage.setItem('posts', JSON.stringify(posts));
-
-            // Clear form
-            document.getElementById('postTitle').value = '';
-            document.getElementById('postContent').value = '';
-            
-            loadPosts();
-        }
-
-        function loadPosts() {
-            const postsContainer = document.getElementById('postsContainer');
-            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-            
-            postsContainer.innerHTML = posts.map(post => `
-                <div class="post-card">
-                    <h2>${post.title}</h2>
-                    <p class="post-date">${post.date}</p>
-                    <p>${post.content}</p>
+    <!-- Main Content -->
+    <main>
+        <!-- Reverend's Message Section -->
+        <section class="reverend-message">
+            <div class="reverend-layout">
+                <div class="reverend-image">
+                    <img src="images/founder2.jpeg" alt="Reverend Picture">
                 </div>
-            `).join('');
-        }
+                <div class="message-container">
+                    <h2>Message from Our Reverend</h2>
+                    <p><strong>Dear Brothers and Sisters in Christ,</strong></p>
+                    <p>
+                        As we walk together in faith, let us remember the words of our Lord: <strong>"Truly I tell you, whatever you did for one of the least of these brothers and sisters of mine, you did for me."</strong> (Matthew 25:40). At Masaba Hope Center, we are called to care for the weak, the vulnerable, and the forgotten among us. 
+                    </p>
+                    <p>
+                        Our ministry is dedicated to spreading hope and love through acts of kindness and service. Together, we can uplift those in need and bring light to their lives. Let us continue to be the hands and feet of Christ in this world.
+                    </p>
+                    <p class="signature">In His Service,<br>Reverend John Doe<br>Masaba Hope Center Ministry</p>
+                </div>
+            </div>
+        </section>
 
-        // Load posts on initial visit
-        loadPosts();
-    </script>
+        <!-- Weekly Timetable Section -->
+        <section class="weekly-timetable">
+            <h2>Weekly Church Timetable</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Day</th>
+                        <th>Activity</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Monday</td>
+                        <td>Prayer Meeting</td>
+                        <td>6:00 PM - 7:30 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Tuesday</td>
+                        <td>Bible Study</td>
+                        <td>6:00 PM - 7:30 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Wednesday</td>
+                        <td>Youth Fellowship</td>
+                        <td>5:00 PM - 6:30 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Thursday</td>
+                        <td>Women's Fellowship</td>
+                        <td>4:00 PM - 5:30 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Friday</td>
+                        <td>Choir Practice</td>
+                        <td>6:00 PM - 7:30 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Saturday</td>
+                        <td>Community Outreach</td>
+                        <td>10:00 AM - 1:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Sunday</td>
+                        <td>Sunday Service</td>
+                        <td>9:00 AM - 12:00 PM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- News Section -->
+        <section class="ministry-news">
+            <h2>Ministry News</h2>
+            <div class="news-content">
+                <img src="images/ministry-news.jpeg" alt="Ministry News">
+                <p>Stay updated with the latest happenings in our ministry. <a href="ministrynews.html">Read more</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="programs.html">Programs</a>
+            <a href="ministry.html">Ministry</a>
+            <a href="donate.html">Donate</a>
+            <a href="blog.html">Updates</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </footer>
 </body>
 </html>
