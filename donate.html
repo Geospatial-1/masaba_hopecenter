@@ -53,6 +53,26 @@
             </form>
         </section>
     </main>
+    <script>
+    const paymentMethodSelect = document.getElementById('payment_method');
+    const bankDetails = document.getElementById('bank-details');
+    const mpesaDetails = document.getElementById('mpesa-details');
+
+    paymentMethodSelect.addEventListener('change', () => {
+        const selectedMethod = paymentMethodSelect.value;
+
+        // Hide all payment details by default
+        bankDetails.style.display = 'none';
+        mpesaDetails.style.display = 'none';
+
+        // Show the relevant payment details
+        if (selectedMethod === 'Bank Transfer') {
+            bankDetails.style.display = 'block';
+        } else if (selectedMethod === 'M-Pesa') {
+            mpesaDetails.style.display = 'block';
+        }
+    });
+</script>
 
     <footer>
         <a href="index.html">Back to Home</a>
