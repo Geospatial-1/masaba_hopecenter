@@ -47,42 +47,49 @@
             }
         }
 
-        function createPost() {
-            const title = document.getElementById('postTitle').value;
-            const content = document.getElementById('postContent').value;
-            const post = {
-                title,
-                content,
-                date: new Date().toLocaleDateString()
-            };
+         function createPost() {
+        const title = document.getElementById('postTitle').value;
+        const content = document.getElementById('postContent').value;
+        const author = "Admin"; // You can replace this with dynamic input if needed
+        const post = {
+            title,
+            content,
+            date: new Date().toLocaleDateString(),
+            author,
+            image: "images/default-post.jpg" // Default image, replace with dynamic input if needed
+        };
 
-            // Save to localStorage
-            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-            posts.push(post);
-            localStorage.setItem('posts', JSON.stringify(posts));
+        // Save to localStorage
+        const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+        posts.push(post);
+        localStorage.setItem('posts', JSON.stringify(posts));
 
-            // Clear form
-            document.getElementById('postTitle').value = '';
-            document.getElementById('postContent').value = '';
-            
-            loadPosts();
-        }
-
-        function loadPosts() {
-            const postsContainer = document.getElementById('postsContainer');
-            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-            
-            postsContainer.innerHTML = posts.map(post => `
-                <div class="post-card">
-                    <h2>${post.title}</h2>
-                    <p class="post-date">${post.date}</p>
-                    <p>${post.content}</p>
-                </div>
-            `).join('');
-        }
-
-        // Load posts on initial visit
+        // Clear form
+        document.getElementById('postTitle').value = '';
+        document.getElementById('postContent').value = '';
+        
         loadPosts();
+    }
+
+    function loadPosts() {
+        const postsContainer = document.getElementById('postsContainer');
+        const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+        
+        postsContainer.innerHTML = posts.map(post => `
+            <div class="post-card">
+                <h2 class="post-title">${post.title}</h2>
+                <img src="${post.image}" alt="Post Image" class="post-image">
+                <p class="post-content">${post.content}</p>
+                <p class="post-meta">
+                    <span class="post-date">${post.date}</span> | 
+                    <span class="post-author">By ${post.author}</span>
+                </p>
+            </div>
+        `).join('');
+    }
+
+    // Load posts on initial visit
+    loadPosts();
     </script>
 </body>
     <footer>
