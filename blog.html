@@ -34,7 +34,7 @@
 
     <script>
         // Simple authentication (for demonstration only)
-        const ADMIN_PASSWORD = 'hope123'; // Change this in production
+        const ADMIN_PASSWORD = 'hopen123'; // Change this in production
         let isLoggedIn = false;
 
         function login() {
@@ -50,13 +50,15 @@
          function createPost() {
         const title = document.getElementById('postTitle').value;
         const content = document.getElementById('postContent').value;
-        const author = "Admin"; // You can replace this with dynamic input if needed
+        const author = document.getElementById('postAuthor').value;
+        const image = document.getElementById('postImage').value;
+
         const post = {
             title,
             content,
             date: new Date().toLocaleDateString(),
             author,
-            image: "images/default-post.jpg" // Default image, replace with dynamic input if needed
+            image
         };
 
         // Save to localStorage
@@ -67,14 +69,16 @@
         // Clear form
         document.getElementById('postTitle').value = '';
         document.getElementById('postContent').value = '';
-        
+        document.getElementById('postAuthor').value = '';
+        document.getElementById('postImage').value = '';
+
         loadPosts();
     }
 
     function loadPosts() {
         const postsContainer = document.getElementById('postsContainer');
         const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-        
+
         postsContainer.innerHTML = posts.map(post => `
             <div class="post-card">
                 <h2 class="post-title">${post.title}</h2>
