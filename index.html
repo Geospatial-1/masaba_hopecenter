@@ -8,10 +8,100 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: #0056b3 !important;
+        }
+
+        .navbar a {
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            color: #ffc107 !important;
+        }
+
+        .header {
+            background: linear-gradient(to bottom, #007bff, #0056b3);
+            color: white;
+            padding: 50px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+        }
+
+        .mission {
+            background: url('images/mission-bg.jpg') no-repeat center center/cover;
+            color: white;
+            padding: 50px 20px;
+            border-radius: 10px;
+        }
+
+        .mission .program-card {
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .programs img {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .programs img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .founder-message img {
+            border: 5px solid #007bff;
+        }
+
+        .carousel img {
+            border-radius: 10px;
+        }
+
+        .donate-section {
+            background: linear-gradient(to bottom, #0056b3, #003f7f);
+            color: white;
+        }
+
+        .donate-section .btn-warning {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 10px 30px;
+        }
+
+        footer {
+            background-color: #003f7f;
+            color: white;
+        }
+
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Menu -->
-    <nav class="navbar navbar-light bg-primary sticky-top">
+    <nav class="navbar navbar-light sticky-top">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand text-white d-flex align-items-center" href="index.html">
                 <img src="images/logo.JPG" alt="logo" width="50" height="50" class="me-2">
@@ -44,7 +134,7 @@
     </nav>
 
     <!-- Header Section -->
-    <header class="bg-primary text-white text-center py-5">
+    <header class="header text-center">
         <div class="container">
             <h1 class="display-4">Masaba Hope Center</h1>
             <p class="lead">Empowering Communities, Building Futures</p>
@@ -53,15 +143,12 @@
 
     <!-- Mission Section -->
     <section class="mission py-5">
-       <div class="col-md-4">
-    <div class="program-card position-relative text-white">
-        <div class="program-image" style="background-image: url('images/picture1.jpeg');"></div>
-        <div class="program-text position-absolute bottom-0 start-50 translate-middle-x text-center p-3">
-            <p class="fw-bold">Providing education to underprivileged children in Kuria.</p>
-            <p>Operating in Kenya's Migori County, we focus on bridging the gap for orphans and vulnerable children to access basic needs by partnering with other donors. There has never been a time like this when the need to help is most urgent. Welcome and feel free to partner with us in this journey.</p>
+        <div class="container">
+            <div class="program-card text-center">
+                <p class="fw-bold">Providing education to underprivileged children in Kuria.</p>
+                <p>Operating in Kenya's Migori County, we focus on bridging the gap for orphans and vulnerable children to access basic needs by partnering with other donors. There has never been a time like this when the need to help is most urgent. Welcome and feel free to partner with us in this journey.</p>
+            </div>
         </div>
-    </div>
-</div>
     </section>
 
     <!-- Programs Section -->
@@ -133,7 +220,7 @@
     </section>
 
     <!-- Donate Section -->
-    <section class="donate-section py-5 text-center bg-primary text-white">
+    <section class="donate-section py-5 text-center">
         <div class="container">
             <p class="fs-4">Your support can change lives. Help us make a difference today!</p>
             <a href="donate.html" class="btn btn-warning btn-lg">Donate Now</a>
@@ -141,7 +228,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
+    <footer class="text-center py-3">
         <div class="container">
             <p>&copy; 2025 Masaba Hope Center. All Rights Reserved.</p>
             <nav>
