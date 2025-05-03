@@ -6,8 +6,138 @@
     <title>Masaba Hope Center Updates</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Styles */
-        
+        /* General Styles */
+        body {
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header .title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .header .description {
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .login-section {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .login-section input {
+            padding: 10px;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+
+        .login-section button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .post-form {
+            display: none;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .post-form input,
+        .post-form textarea {
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 10px;
+            padding: 10px;
+            font-size: 1rem;
+        }
+
+        .post-form button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .post-card {
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .post-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .post-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .post-card .post-content {
+            padding: 15px;
+        }
+
+        .post-card .post-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 0 10px;
+        }
+
+        .post-card .post-highlight {
+            font-size: 0.9rem;
+            color: #555;
+            margin: 0 0 10px;
+        }
+
+        .post-card .post-meta {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .post-card a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
     </style>
 </head>
 <body>
@@ -26,20 +156,22 @@
             <h2>Create New Post</h2>
             <input type="text" id="postTitle" placeholder="Post Title">
             <textarea id="postContent" rows="5" placeholder="Post Content"></textarea>
+            <input type="text" id="postImage" placeholder="Image URL">
             <button onclick="createPost()">Publish Post</button>
         </div>
 
-        <div id="postsContainer"></div>
+        <div class="posts-grid" id="postsContainer">
+            <!-- Posts will be dynamically loaded here -->
+        </div>
     </div>
 
     <script>
-        // Simple authentication (for demonstration only)
-        const ADMIN_PASSWORD = 'hopen123'; // Change this in production
+        const ADMIN_PASSWORD = 'hope123'; // Change this in production
         let isLoggedIn = false;
 
         function login() {
             const password = document.getElementById('password').value;
-            if(password === ADMIN_PASSWORD) {
+            if (password === ADMIN_PASSWORD) {
                 isLoggedIn = true;
                 document.querySelector('.post-form').style.display = 'block';
                 document.querySelector('.login-section').style.display = 'none';
@@ -47,67 +179,52 @@
             }
         }
 
-         function createPost() {
-        const title = document.getElementById('postTitle').value;
-        const content = document.getElementById('postContent').value;
-        const author = document.getElementById('postAuthor').value;
-        const image = document.getElementById('postImage').value;
+        function createPost() {
+            const title = document.getElementById('postTitle').value;
+            const content = document.getElementById('postContent').value;
+            const image = document.getElementById('postImage').value || 'https://via.placeholder.com/300x150'; // Default image
 
-        const post = {
-            title,
-            content,
-            date: new Date().toLocaleDateString(),
-            author,
-            image
-        };
+            const post = {
+                title,
+                content,
+                image,
+                date: new Date().toLocaleDateString()
+            };
 
-        // Save to localStorage
-        const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-        posts.push(post);
-        localStorage.setItem('posts', JSON.stringify(posts));
+            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+            posts.unshift(post); // Add the new post to the beginning
+            localStorage.setItem('posts', JSON.stringify(posts));
 
-        // Clear form
-        document.getElementById('postTitle').value = '';
-        document.getElementById('postContent').value = '';
-        document.getElementById('postAuthor').value = '';
-        document.getElementById('postImage').value = '';
+            document.getElementById('postTitle').value = '';
+            document.getElementById('postContent').value = '';
+            document.getElementById('postImage').value = '';
 
+            loadPosts();
+        }
+
+        function loadPosts() {
+            const postsContainer = document.getElementById('postsContainer');
+            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+
+            postsContainer.innerHTML = posts.map(post => `
+                <div class="post-card">
+                    <img src="${post.image}" alt="Post Image">
+                    <div class="post-content">
+                        <h3 class="post-title">${post.title}</h3>
+                        <p class="post-highlight">${post.content.substring(0, 100)}...</p>
+                        <p class="post-meta">${post.date}</p>
+                    </div>
+                    <a href="#" onclick="viewPost('${post.title}', '${post.image}', '${post.content}', '${post.date}')"></a>
+                </div>
+            `).join('');
+        }
+
+        function viewPost(title, image, content, date) {
+            alert(`Title: ${title}\nDate: ${date}\n\n${content}`);
+        }
+
+        // Load posts on initial visit
         loadPosts();
-    }
-
-    function loadPosts() {
-        const postsContainer = document.getElementById('postsContainer');
-        const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-
-        postsContainer.innerHTML = posts.map(post => `
-            <div class="post-card">
-                <h2 class="post-title">${post.title}</h2>
-                <img src="${post.image}" alt="Post Image" class="post-image">
-                <p class="post-content">${post.content}</p>
-                <p class="post-meta">
-                    <span class="post-date">${post.date}</span> | 
-                    <span class="post-author">By ${post.author}</span>
-                </p>
-            </div>
-        `).join('');
-    }
-
-    // Load posts on initial visit
-    loadPosts();
     </script>
 </body>
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Masaba Hope Center. All Rights Reserved.</p>
-            <nav>
-                <a href="index.html" class="text-white me-3">Home</a>
-                <a href="about.html" class="text-white me-3">About Us</a>
-                <a href="programs.html" class="text-white me-3">Programs</a>
-                <a href="ministry.html" class="text-white me-3">Ministry</a>
-                <a href="donate.html" class="text-white me-3">Donate</a>
-                <a href="blog.html" class="text-white me-3">Updates</a>
-                <a href="contact.html" class="text-white">Contact Us</a>
-            </nav>
-        </div>
-    </footer>
 </html>
