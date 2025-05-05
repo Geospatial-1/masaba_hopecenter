@@ -3,193 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masaba Hope Center Blog</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <title>Create Blog Post</title>
     <style>
-        /* General Styles */
         body {
-            font-family: 'Lato', sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
             background-color: #f9f9f9;
-        }
-
-        .header {
-            background-color: #007bff;
-            color: white;
+            margin: 0;
             padding: 20px;
-            text-align: center;
-        }
-
-        .header .title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            margin: 0;
-        }
-
-        .header .description {
-            font-size: 1.2rem;
-            margin: 0;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-
-        .post-form {
-            margin-bottom: 20px;
-            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
             background: #fff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .post-form input,
-        .post-form textarea {
-            width: 100%;
-            max-width: 500px;
-            margin-bottom: 10px;
-            padding: 10px;
-            font-size: 1rem;
-        }
-
-        .post-form input[type="file"] {
-            padding: 5px;
-        }
-
-        .post-form button {
-            padding: 10px 20px;
-            font-size: 1rem;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        .posts-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .post-card {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .post-card:hover {
-            transform: scale(1.05);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .post-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .post-card .post-content {
-            padding: 15px;
-        }
-
-        .post-card .post-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 0 0 10px;
-        }
-
-        .post-card .post-highlight {
-            font-size: 0.9rem;
-            color: #555;
-            margin: 0 0 10px;
-        }
-
-        .post-card .post-meta {
-            font-size: 0.8rem;
-            color: #888;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            max-width: 800px;
-            width: 90%;
+        .container h2 {
             text-align: center;
-        }
-
-        .modal-content img {
-            max-width: 100%;
-            height: auto;
             margin-bottom: 20px;
         }
 
-        .modal-content h3 {
+        .container input,
+        .container textarea {
+            width: 100%;
+            padding: 10px;
             margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
         }
 
-        .modal-content p {
-            margin-bottom: 20px;
-        }
-
-        .modal-close {
+        .container button {
+            width: 100%;
+            padding: 10px;
             background: #007bff;
             color: white;
             border: none;
-            padding: 10px 20px;
-            cursor: pointer;
             border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .container button:hover {
+            background: #0056b3;
         }
     </style>
 </head>
 <body>
-    <header class="header">
-        <h1 class="title">Masaba Hope Center Blog</h1>
-        <p class="description">Stay Updated with Our Latest News</p>
-    </header>
-
     <div class="container">
-        <div class="post-form">
-            <h2>Create New Post</h2>
-            <input type="text" id="postTitle" placeholder="Post Title">
-            <textarea id="postContent" rows="5" placeholder="Post Content"></textarea>
-            <input type="file" id="postImages" multiple>
-            <button onclick="createPost()">Publish Post</button>
-        </div>
-
-        <div class="posts-grid" id="postsContainer">
-            <!-- Posts will be dynamically loaded here -->
-        </div>
-    </div>
-
-    <!-- Modal for Full Post View -->
-    <div class="modal" id="postModal">
-        <div class="modal-content">
-            <h3 id="modalTitle"></h3>
-            <div id="modalImages"></div>
-            <p id="modalContent"></p>
-            <button class="modal-close" onclick="closeModal()">Close</button>
-        </div>
+        <h2>Create New Blog Post</h2>
+        <input type="text" id="postTitle" placeholder="Post Title">
+        <textarea id="postContent" rows="5" placeholder="Post Content"></textarea>
+        <input type="file" id="postImages" multiple>
+        <button onclick="createPost()">Publish Post</button>
     </div>
 
     <script>
@@ -223,48 +90,9 @@
             posts.unshift(post); // Add the new post to the beginning
             localStorage.setItem('posts', JSON.stringify(posts));
 
-            document.getElementById('postTitle').value = '';
-            document.getElementById('postContent').value = '';
-            document.getElementById('postImages').value = '';
-
-            loadPosts();
+            alert('Post published successfully!');
+            window.location.href = 'Blog.html'; // Redirect to the blog display page
         }
-
-        function loadPosts() {
-            const postsContainer = document.getElementById('postsContainer');
-            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-
-            postsContainer.innerHTML = posts.map((post, index) => `
-                <div class="post-card" onclick="viewPost(${index})">
-                    <img src="${post.images[0]}" alt="Post Image">
-                    <div class="post-content">
-                        <h3 class="post-title">${post.title}</h3>
-                        <p class="post-highlight">${post.content.substring(0, 100)}...</p>
-                        <p class="post-meta">${post.date}</p>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function viewPost(index) {
-            const posts = JSON.parse(localStorage.getItem('posts') || '[]');
-            const post = posts[index];
-
-            document.getElementById('modalTitle').textContent = post.title;
-            document.getElementById('modalContent').textContent = post.content;
-
-            const modalImages = document.getElementById('modalImages');
-            modalImages.innerHTML = post.images.map(image => `<img src="${image}" alt="Post Image">`).join('');
-
-            document.getElementById('postModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('postModal').style.display = 'none';
-        }
-
-        // Load posts on initial visit
-        loadPosts();
     </script>
 </body>
 </html>
