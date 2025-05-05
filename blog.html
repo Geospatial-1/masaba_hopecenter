@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Masaba Hope Center Updates</title>
+    <title>Masaba Hope Center Blog</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -84,7 +84,7 @@
 </head>
 <body>
     <header class="header">
-        <h1 class="title">Masaba Hope Center Updates</h1>
+        <h1 class="title">Masaba Hope Center Blog</h1>
         <p class="description">Stay Updated with Our Latest News</p>
     </header>
 
@@ -96,6 +96,11 @@
         function loadPosts() {
             const postsContainer = document.getElementById('postsContainer');
             const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+
+            if (posts.length === 0) {
+                postsContainer.innerHTML = '<p>No posts available. Please create a post first.</p>';
+                return;
+            }
 
             postsContainer.innerHTML = posts.map(post => `
                 <div class="post-card">
