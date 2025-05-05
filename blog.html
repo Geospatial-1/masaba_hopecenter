@@ -93,32 +93,28 @@
     </div>
     
     <script>
-        function loadPosts() {
+       function loadPosts() {
     const postsContainer = document.getElementById('postsContainer');
-    try {
-        const posts = JSON.parse(localStorage.getItem('posts') || '[]');
+    const posts = JSON.parse(localStorage.getItem('posts') || '[]');
 
-        if (posts.length === 0) {
-            postsContainer.innerHTML = '<p>No posts available. Please create a post first.</p>';
-            return;
-        }
+    console.log(posts); // Debugging: Check the structure of the posts array
 
-        postsContainer.innerHTML = posts.map(post => `
-            <div class="post-card">
-                <img src="${post.images[0]}" alt="Post Image">
-                <div class="post-content">
-                    <h2 class="post-title">${post.title}</h2>
-                    <p class="post-highlight">${post.content.substring(0, 200)}...</p>
-                    <p class="post-meta">Published on: ${post.date}</p>
-                </div>
-            </div>
-        `).join('');
-    } catch (error) {
-        console.error('Error loading posts:', error);
-        postsContainer.innerHTML = '<p>There was an error loading the posts. Please try again later.</p>';
+    if (posts.length === 0) {
+        postsContainer.innerHTML = '<p>No posts available. Please create a post first.</p>';
+        return;
     }
-}
 
+    postsContainer.innerHTML = posts.map(post => `
+        <div class="post-card">
+            <img src="${post.images && post.images[0] ? post.images[0] : 'placeholder.jpg'}" alt="Post Image">
+            <div class="post-content">
+                <h2 class="post-title">${post.title}</h2>
+                <p class="post-highlight">${post.content.substring(0, 200)}...</p>
+                <p class="post-meta">Published on: ${post.date}</p>
+            </div>
+        </div>
+    `).join('');
+}
 // Load posts on initial visit
 loadPosts();
     </script>
