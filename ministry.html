@@ -3,188 +3,190 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ministry - Masaba Hope Center</title>
+    <title>True Jesus Church</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom Styles -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Lato', sans-serif;
-            background-color: #f9f9f9;
+            font-family: 'Lato', Arial, sans-serif;
+            background: #f9f9f9;
+            margin: 0;
+            padding: 0;
         }
-
-        .header {
-            background-color: #007bff;
+        /* Navbar */
+        .navbar {
+            background-color: #28a745;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+        }
+        .navbar-links a {
+            background: white;
+            color: #007bff;
+            font-size: 1rem;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            margin-left: 10px;
+            border: none;
+            display: inline-block;
+            transition: background 0.2s, color 0.2s;
+        }
+        .navbar-links a:hover {
+            background-color: #ffc107;
+            color: #0056b3;
+        }
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 90vh;
+            background: url('images/picture1.jpeg') center center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 123, 255, 0.45);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
             color: white;
             text-align: center;
-            padding: 50px 20px;
+            max-width: 700px;
+            margin: 0 auto;
         }
-
-        .header h1 {
-            font-size: 3rem;
+        .hero-content h1 {
             font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.3);
         }
-
-        .header p {
-            font-size: 1.2rem;
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
-
-        .reverend-image img {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        .hero-content .btn-main {
+            background: #ffc107;
+            color: #003f7f;
+            font-size: 1.3rem;
+            font-weight: bold;
+            padding: 14px 38px;
+            border-radius: 4px;
+            border: none;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
-
-        .table-striped tbody tr:nth-of-type(odd) {
-            background-color: rgba(0, 123, 255, 0.1);
+        .hero-content .btn-main:hover {
+            background: #ffdb58;
+            color: #007bff;
         }
-
-        .table thead {
-            background-color: #007bff;
+        /* About Section */
+        .about-section {
+            background: #fff;
+            padding: 60px 0 40px 0;
+            text-align: center;
+        }
+        .about-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #007bff;
+            font-size: 2.3rem;
+            margin-bottom: 18px;
+        }
+        .about-section p {
+            font-size: 1.15rem;
+            color: #333;
+            max-width: 700px;
+            margin: 0 auto 20px auto;
+        }
+        /* Footer */
+        footer {
+            background-color: #003f7f;
             color: white;
+            text-align: center;
+            padding: 18px 20px 10px 20px;
         }
-
-        .news-content img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-bottom: 15px;
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 700px) {
+            .hero-content h1 { font-size: 2.1rem; }
+            .hero-content p { font-size: 1.05rem; }
+            .hero-content .btn-main { font-size: 1rem; padding: 10px 20px; }
         }
     </style>
 </head>
 <body>
-    <!-- Floating Menu -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="images/cross.PNG" alt="Masaba Hope Center Logo" width="50" height="50">
-                Masaba Hope Center
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="programs.html">Programs</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="ministry.html">Ministry</a></li>
-                    <li class="nav-item"><a class="nav-link" href="donate.html">Donate</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html">Updates</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-                </ul>
-            </div>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <span class="navbar-brand">Welcome to Church site</span>
+        <div class="navbar-links">
+            <a href="ministry.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="ministry.html">Ministry</a>
+            <a href="donate.html">Support Charity</a>
+            <a href="ministrynews.html">Updates</a>
+            <a href="contact.html">Contact</a>
         </div>
     </nav>
 
-    <!-- Header Section -->
-    <header class="header">
-        <h1>Ministry</h1>
-        <p>Spreading Hope and Faith</p>
-    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Welcome to True Jesus Church</h1>
+            <p>
+                For your spiritual path into christianity and eternal hope<br>
+                Empowering communities, building futures, and offering hope through Christ our lord.
+            </p>
+            <a href="donate.html" class="btn-main">Support Children home</a>
+        </div>
+    </section>
 
-    <!-- Main Content -->
-    <main class="container py-5">
-        <!-- Reverend's Message Section -->
-        <section class="reverend-message mb-5">
-            <div class="row align-items-center">
-                <div class="col-md-4">
-                    <img src="images/founder1.jpeg" alt="Reverend Picture" class="img-fluid">
-                </div>
-                <div class="col-md-8">
-                    <h2>Message from Our Pastor</h2>
-                    <p><strong>Dear Brothers and Sisters in Christ,</strong></p>
-                    <p>
-                        As we walk together in faith, let us remember the words of our Lord: <strong>"Truly I tell you, whatever you did for one of the least of these brothers and sisters of mine, you did for me."</strong> (Matthew 25:40). At Masaba Hope Center, we are called to care for the weak, the vulnerable, and the forgotten among us. 
-                    </p>
-                    <p>
-                        Our ministry is dedicated to spreading hope and love through acts of kindness and service. Together, we can uplift those in need and bring light to their lives. Let us continue to be the hands and feet of Christ in this world.
-                    </p>
-                    <p class="text-muted">In His Service,<br> Joseph Maroa Itembe<br>Masaba Hope Center Ministry</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Weekly Timetable Section -->
-        <section class="weekly-timetable mb-5">
-            <h2 class="text-center mb-4">Weekly Church Timetable</h2>
-            <div class="table-responsive">
-                <table class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Day</th>
-                            <th>Activity</th>
-                            <th>Time</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Monday</td>
-                            <td>Prayer Meeting</td>
-                            <td>6:00 PM - 7:30 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Tuesday</td>
-                            <td>Bible Study</td>
-                            <td>6:00 PM - 7:30 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Wednesday</td>
-                            <td>Youth Fellowship</td>
-                            <td>5:00 PM - 6:30 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Thursday</td>
-                            <td>Women's Fellowship</td>
-                            <td>4:00 PM - 5:30 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Friday</td>
-                            <td>Choir Practice</td>
-                            <td>6:00 PM - 7:30 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Saturday</td>
-                            <td>Community Outreach</td>
-                            <td>10:00 AM - 1:00 PM</td>
-                        </tr>
-                        <tr>
-                            <td>Sunday</td>
-                            <td>Sunday Service</td>
-                            <td>9:00 AM - 12:00 PM</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- News Section -->
-        <section class="ministry-news">
-            <h2 class="text-center mb-4">Ministry News</h2>
-            <div class="row">
-                <div class="col-md-6 mx-auto text-center">
-                    <img src="images/ministry.jpeg" alt="Ministry News" class="img-fluid">
-                    <p class="mt-3">Stay updated with the latest happenings in our ministry. <a href="ministrynews.html" class="text-primary">Read more</a>.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+    <!-- About Section -->
+    <section class="about-section">
+        <h2>About True Jesus Church</h2>
+        <p>
+            The foundation of all things start with firm faith in our creater. We take the journey with you through the bible as a guide. 
+            Join us today and experience the holy spirit and become part of our growing family that seeks to do God's will for our lives.
+        </p>
+        <p>
+            <strong>Join us</strong> also in making a difference. Your support to charity makes the less fortunate access necessary needs through Christ our Lord.
+        </p>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white text-center py-3">
-        <div class="container">
-            <p>&copy; 2025 Masaba Hope Center. All Rights Reserved.</p>
-            <nav>
-                <a href="index.html" class="text-white me-3">Home</a>
-                <a href="about.html" class="text-white me-3">About Us</a>
-                <a href="programs.html" class="text-white me-3">Programs</a>
-                <a href="ministry.html" class="text-white me-3">Ministry</a>
-                <a href="donate.html" class="text-white me-3">Donate</a>
-                <a href="blog.html" class="text-white me-3">Updates</a>
-                <a href="contact.html" class="text-white">Contact Us</a>
-            </nav>
-        </div>
+    <footer>
+        <p>&copy; 2025 Masaba Hope Center and True Jesus Church. All Rights Reserved.</p>
+        <nav>
+            <a href="donate.html">Donate</a>
+            <a href="donations.html">View Donations</a>
+            <a href="privacy terms.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+        </nav>
     </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
