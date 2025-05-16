@@ -4,7 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Masaba Hope Center</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        /* Basic Reset */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f9fa;
+            color: #222;
+        }
+
+        /* Sticky Navigation */
+        .sticky-menu {
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .sticky-menu ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            padding: 1em 0;
+        }
+        .sticky-menu li {
+            margin: 0 1em;
+        }
+        .sticky-menu a {
+            text-decoration: none;
+            color: #00796b;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .sticky-menu a:hover {
+            color: #004d40;
+        }
+
+        /* Letterhead */
+        .letterhead {
+            display: flex;
+            align-items: center;
+            background: #e0f2f1;
+            padding: 1.5em 2em;
+            border-bottom: 2px solid #00796b;
+        }
+        .logo-section img {
+            height: 80px;
+            border-radius: 10px;
+            margin-right: 1.5em;
+        }
+        .title-section h1 {
+            color: #00796b;
+            margin-bottom: 0.2em;
+        }
+        .title-section p {
+            color: #555;
+        }
+
+        /* Mission Section */
+        .mission .image-overlay {
+            position: relative;
+            max-width: 800px;
+            margin: 2em auto;
+        }
+        .mission img {
+            width: 100%;
+            border-radius: 12px;
+            filter: brightness(0.85);
+        }
+        .mission .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,121,107,0.7);
+            color: #fff;
+            padding: 2em;
+            border-radius: 12px;
+            text-align: center;
+            width: 80%;
+        }
+
+        /* Carousel Styles */
+        .carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 2em auto;
+            overflow: hidden;
+        }
+        .carousel-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        .carousel-slide img {
+            width: 100%;
+            border-radius: 10px;
+            height: 350px;
+            object-fit: cover;
+        }
+        .carousel .prev-btn, .carousel .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #00796b;
+            color: #fff;
+            border: none;
+            font-size: 2em;
+            padding: 0.2em 0.6em;
+            border-radius: 50%;
+            cursor: pointer;
+            opacity: 0.7;
+            z-index: 10;
+        }
+        .carousel .prev-btn { left: 10px; }
+        .carousel .next-btn { right: 10px; }
+        .carousel .prev-btn:hover, .carousel .next-btn:hover { opacity: 1; }
+
+        /* Programs, Ministry, Testimonials, etc. */
+        section {
+            margin: 2em auto;
+            max-width: 900px;
+            background: #fff;
+            padding: 2em;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        h2 { color: #00796b; margin-bottom: 1em; }
+        .donate-button {
+            background: #00796b;
+            color: #fff;
+            padding: 0.7em 2em;
+            border: none;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .donate-button:hover { background: #004d40; }
+
+        /* Gallery */
+        .gallery-images {
+            display: flex;
+            gap: 1em;
+            justify-content: center;
+        }
+        .gallery-images img {
+            width: 30%;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .gallery-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 16px rgba(0,121,107,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #00796b;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 2em;
+        }
+        footer nav a {
+            color: #fff;
+            margin: 0 1em;
+            text-decoration: underline;
+        }
+        /* Responsive */
+        @media (max-width: 700px) {
+            .letterhead, .mission .image-overlay, section {
+                flex-direction: column;
+                padding: 1em;
+            }
+            .gallery-images { flex-direction: column; }
+            .gallery-images img { width: 100%; }
+        }
+    </style>
+</head>
+<body>
     <nav class="sticky-menu">
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -16,8 +200,6 @@
             <li><a href="contact.html">Contact Us</a></li>
         </ul>
     </nav>
-</head>
-<body>
     <header class="letterhead">
         <div class="logo-section">
             <img src="images/logo.jpg" alt="Masaba Hope Center Logo">
@@ -29,214 +211,9 @@
     </header>
 
     <main>
-        <section class="mission">
-            <div class="image-overlay">
-                <img src="images/picture2.jpeg" alt="Our Mission Image">
-                <div class="text-overlay">
-                    <h2>Our Mission</h2>
-                    <p>To provide hope, care, and opportunities for orphaned and vulnerable children in Kuria, Migori County, empowering them to lead successful lives and break the cycle of poverty.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="programs">
-            <h2>Our Programs</h2>
-            <img src="images/program.jpeg" alt="Programs">
-            <p>We provide education, healthcare, and community support to change lives.</p>
-        </section>
-
-        <section class="founder-message">
-            <div class="founder-layout">
-                <div class="founder-image">
-                    <img src="images/founder.jpeg" alt="Founder Picture">
-                </div>
-                <div class="message-container">
-                    <h2>Message from Our Manager</h2>
-                    <p>Dear Friends and Supporters,</p>
-                    <p>
-                        My name is Annastancia Mogesi Maroa, and I am the Manager of <strong>Masaba Hope Center</strong>, a dedicated children's home located in the heart of Kuria, Migori County. Our mission is to offer a safe haven for orphaned and vulnerable children, many of whom have been deeply affected by poverty, loss, and hardship.
-                    </p>
-                    <p class="call-to-action">
-                        <strong>We urgently need your help.</strong> Your donations will directly impact these children, providing them the chance to experience safety, nourishment, and the opportunity to build a better future.
-                    </p>
-                    <p class="signature">Warm regards,<br>Joseph Maroa Itembe<br>Co-Founder, Masaba Hope Center</p>
-                </div>
-            </div>
-        </section>
-        <section class="carousel">
-            <div class="carousel-container">
-                <div class="carousel-slide">
-                    <img src="images/picture1.jpeg" alt="picture1.jpeg">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture1.jpeg" alt="picture2.jpeg">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture1.jpeg" alt="picture3.jpeg">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture1.jpeg" alt="picture1.jpeg">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture1.jpeg" alt="picture1.jpeg">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture2.jpeg" alt="picture2.jpeg">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture3.jpeg" alt="picture7.jpeg">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture4.jpeg" alt="Slide 8">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture5.jpeg" alt="Slide 9">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture6.jpeg" alt="Slide 5">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture7.jpeg" alt="Slide 6">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture8.jpeg" alt="Slide 7">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture9.jpeg" alt="Slide 8">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture9.jpeg" alt="Slide 9">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture10.jpeg" alt="Slide 10">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture11.jpeg" alt="Slide 11">
-                </div>
-                <div class="carousel-slide">
-                    <img src="images/picture12.jpeg" alt="Slide 12">
-                </div>
-            </div>
-            <button class="prev-btn">❮</button>
-            <button class="next-btn">❯</button>
-        </section>
-        <section class="current-programs">
-            <h2>Our Current Programs</h2>
-            <div class="program-carousel">
-                <div class="program-slide">
-                    <img src="images/program1.jpeg" alt="Program 1">
-                    <p>Providing education to underprivileged children in Kuria.</p>
-                </div>
-                <div class="program-slide">
-                    <img src="images/program2.jpeg" alt="Program 2">
-                    <p>Offering healthcare services to vulnerable families.</p>
-                </div>
-                <div class="program-slide">
-                    <img src="images/program3.jpeg" alt="Program 3">
-                    <p>Empowering women through skill development programs.</p>
-                </div>
-            </div>
-            <button class="prev-btn">❮</button>
-            <button class="next-btn">❯</button>
-        </section>
-        <section class="news-update">
-            <h2>News Update</h2>
-            <div class="news-content">
-                <img src="images/news.jpeg" alt="News Update">
-                <p>We are currently focusing on building a new dormitory for the children. <a href="blog.html">Read more on our blog.</a></p>
-            </div>
-        </section>
-        <section class="ministry">
-            <h2>Ministry</h2>
-            <p>Our ministry focuses on spreading hope and faith through various church programs. Join us in our mission to uplift communities spiritually and emotionally.</p>
-            <div class="ministry-carousel">
-                <div class="ministry-slide">
-                    <img src="images/ministry1.jpeg" alt="Ministry 1">
-                    <a href="ministry1.html">Youth Ministry</a>
-                </div>
-                <div class="ministry-slide">
-                    <img src="images/ministry2.jpeg" alt="Ministry 2">
-                    <a href="ministry2.html">Women's Fellowship</a>
-                </div>
-                <div class="ministry-slide">
-                    <img src="images/ministry3.jpeg" alt="Ministry 3">
-                    <a href="ministry3.html">Community Outreach</a>
-                </div>
-            </div>
-            <button class="prev-btn">❮</button>
-            <button class="next-btn">❯</button>
-        </section>
-        <section class="donate-section">
-            <div class="donate-content">
-                <p>Your support can change lives. Help us make a difference today!</p>
-                <a href="donate.html" class="donate-button">Donate Now</a>
-            </div>
-        </section>
-        <section class="testimonials">
-            <h2>What People Say</h2>
-            <div class="testimonial">
-                <p>"Masaba Hope Center gave me a second chance at life. I am forever grateful!"</p>
-                <p>- Jane Doe</p>
-            </div>
-            <div class="testimonial">
-                <p>"The programs here have transformed our community. Thank you!"</p>
-                <p>- John Smith</p>
-            </div>
-        </section>
-        <section class="team-message">
-            <h2>Message from Our Team</h2>
-            <p>We are a dedicated team working tirelessly to bring hope and change to the lives of vulnerable children and families. Together, we can achieve more!</p>
-        </section>
-        <section class="repeat-donation">
-            <h2>Make a Lasting Impact</h2>
-            <p>Consider setting up a recurring donation to support our programs consistently.</p>
-            <a href="donate.html" class="donate-button">Set Up Recurring Donation</a>
-        </section>
-        <section class="newsletter">
-            <h2>Stay Updated</h2>
-            <p>Subscribe to our newsletter to receive the latest updates and stories.</p>
-            <form>
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </section>
-        <section class="gallery">
-            <h2>Gallery</h2>
-            <div class="gallery-images">
-                <img src="images/gallery1.jpeg" alt="Gallery Image 1">
-                <img src="images/gallery2.jpeg" alt="Gallery Image 2">
-                <img src="images/gallery3.jpeg" alt="Gallery Image 3">
-            </div>
-        </section>
-        <script>
-            const slides = document.querySelectorAll('.carousel-slide');
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            let currentIndex = 0;
-        
-            function updateCarousel() {
-                const container = document.querySelector('.carousel-container');
-                container.style.transform = `translateX(-${currentIndex * 100}%)`;
-            }
-        
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
-                updateCarousel();
-            });
-        
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
-                updateCarousel();
-            });
-        </script>
-        <script>
-            window.addEventListener('scroll', () => {
-                if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-                    document.body.innerHTML += document.body.innerHTML;
-                }
-            });
-        </script>
-
+        <!-- ...existing code... -->
+        <!-- (Keep all your sections as they are) -->
+        <!-- ...existing code... -->
     </main>
 
     <footer>
@@ -245,6 +222,56 @@
             <a href="donations.html">View Donations</a>
         </nav>
     </footer>
-</body>
 
+    <script>
+    // Carousel Functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const carousel = document.querySelector('.carousel');
+        if (carousel) {
+            const slides = carousel.querySelectorAll('.carousel-slide');
+            const prevBtn = carousel.querySelector('.prev-btn');
+            const nextBtn = carousel.querySelector('.next-btn');
+            const container = carousel.querySelector('.carousel-container');
+            let currentIndex = 0;
+
+            function updateCarousel() {
+                container.style.transform = `translateX(-${currentIndex * 100}%)`;
+            }
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex === 0) ? slides.length - 1 : currentIndex - 1;
+                updateCarousel();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex === slides.length - 1) ? 0 : currentIndex + 1;
+                updateCarousel();
+            });
+
+            // Optional: Auto-slide every 5 seconds
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateCarousel();
+            }, 5000);
+        }
+    });
+
+    // Simple fade-in effect on scroll
+    window.addEventListener('scroll', function() {
+        document.querySelectorAll('section').forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                section.style.opacity = 1;
+                section.style.transform = 'translateY(0)';
+                section.style.transition = 'opacity 0.7s, transform 0.7s';
+            }
+        });
+    });
+    // Initialize section fade-in
+    document.querySelectorAll('section').forEach(section => {
+        section.style.opacity = 0;
+        section.style.transform = 'translateY(40px)';
+    });
+    </script>
+</body>
 </html>
