@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masaba Hope Center Ministry News</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', 'Lato', Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #0056b3 !important;
+        }
+        .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem !important;
+            font-weight: bold;
+            color: white !important;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .navbar-brand img {
+            width: 38px;
+            height: 38px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .navbar-nav .nav-link,
+        .navbar .btn {
+            font-size: 1rem;
+            padding: 6px 14px;
+            margin-left: 6px;
+            border-radius: 4px;
+            background: white;
+            color: #007bff !important;
+            font-weight: 600;
+            border: none;
+            transition: background 0.2s, color 0.2s;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar .btn:hover {
+            background-color: #ffc107;
+            color: #0056b3 !important;
+        }
+        .donate-btn {
+            background: #ffc107;
+            color: #003f7f !important;
+            font-weight: bold;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 28px;
+            margin-left: 12px;
+            transition: background 0.2s;
+        }
+        .donate-btn:hover {
+            background: #ffdb58;
+            color: #007bff !important;
+        }
+        .header {
+            background: linear-gradient(to right, #007bff, #0056b3);
+            color: white;
+            padding: 48px 10px 32px 10px;
+            text-align: center;
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.7rem;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 1.25rem;
+            margin-bottom: 0;
+        }
+        /* Carousel */
+        .carousel {
+            margin: 32px auto 24px auto;
+            max-width: 900px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+        }
+        .carousel-inner img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+        }
+        @media (max-width: 700px) {
+            .carousel-inner img {
+                height: 180px;
+            }
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            .header p {
+                font-size: 1rem;
+            }
+        }
+        /* Reverend Section */
+        .reverend-section {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+            padding: 32px 24px;
+            max-width: 900px;
+            margin: 32px auto;
+            flex-wrap: wrap;
+        }
+        .reverend-photo {
+            flex: 0 0 220px;
+            text-align: center;
+        }
+        .reverend-photo img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 6px solid #007bff;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+        }
+        .reverend-info {
+            flex: 1 1 300px;
+        }
+        .reverend-info h2 {
+            font-family: 'Playfair Display', serif;
+            color: #0056b3;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+        .reverend-info p {
+            font-size: 1.13rem;
+            color: #333;
+        }
+        @media (max-width: 900px) {
+            .reverend-section {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 18px;
+            }
+            .reverend-photo {
+                text-align: left;
+            }
+        }
+        /* Church Programs */
+        .programs-section {
+            background: #f6faff;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+            padding: 36px 24px;
+            max-width: 950px;
+            margin: 32px auto;
+        }
+        .programs-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #28a745;
+            font-size: 1.4rem;
+            margin-bottom: 24px;
+        }
+        .program-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            justify-content: center;
+        }
+        .program-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            width: 270px;
+            padding: 18px 12px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .program-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.13);
+        }
+        .program-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .program-card h3 {
+            font-size: 1.1rem;
+            color: #007bff;
+            margin-bottom: 8px;
+        }
+        .program-card p {
+            font-size: 0.98rem;
+            color: #444;
+        }
+        @media (max-width: 700px) {
+            .program-list {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .program-card {
+                width: 100%;
+            }
+        }
+        /* Footer */
+        footer {
+            background-color: #003f7f;
+            color: white;
+            text-align: center;
+            padding: 18px 20px 10px 20px;
+            font-family: 'Inter', 'Lato', Arial, sans-serif;
+        }
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.JPG" alt="logo">
+                Masaba Hope Center Ministry
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="programs.html">Programs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="ministrynews.html">Ministry News</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="donate.html">Donate</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="blog.html">Updates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn" href="contact.html">Contact Us</a>
+                    </li>
+                </ul>
+                <a href="donate.html" class="donate-btn ms-3">Donate</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Welcome to Masaba Hope Center Ministry</h1>
+        <p>Sharing the love of Christ through service, compassion, and hope for every child and family.</p>
+    </header>
+
+    <!-- Carousel -->
+    <div id="ministryCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="images/church1.jpg" class="d-block w-100" alt="Church Service">
+            </div>
+            <div class="carousel-item">
+                <img src="images/children1.jpg" class="d-block w-100" alt="Children Worship">
+            </div>
+            <div class="carousel-item">
+                <img src="images/outreach1.jpg" class="d-block w-100" alt="Community Outreach">
+            </div>
+            <div class="carousel-item">
+                <img src="images/choir1.jpg" class="d-block w-100" alt="Church Choir">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#ministryCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#ministryCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <!-- Reverend Section -->
+    <section class="reverend-section">
+        <div class="reverend-photo">
+            <img src="images/reverend.jpg" alt="Reverend Photo">
+        </div>
+        <div class="reverend-info">
+            <h2>Rev. John Mwita</h2>
+            <p>
+                <strong>Senior Pastor & Founder</strong><br>
+                Rev. John Mwita leads Masaba Hope Center Ministry with a vision to transform lives through faith, education, and compassion. His dedication to serving the vulnerable, especially children, has inspired many to join the mission of hope and restoration in Kuria and beyond.
+            </p>
+            <p>
+                <em>"We believe every child deserves love, dignity, and a future. Thank you for being part of this journey of faith and service."</em>
+            </p>
+        </div>
+    </section>
+
+    <!-- Church Programs Section -->
+    <section class="programs-section">
+        <h2>Upcoming Church Programs & Projects</h2>
+        <div class="program-list">
+            <div class="program-card">
+                <img src="images/feeding.jpg" alt="Feeding Program">
+                <h3>Feeding Program</h3>
+                <p>Weekly meals for children and families in need. Join us every Saturday to serve and share hope.</p>
+            </div>
+            <div class="program-card">
+                <img src="images/education.jpg" alt="Education Support">
+                <h3>Education Support</h3>
+                <p>Providing school supplies, mentorship, and scholarships to empower the next generation.</p>
+            </div>
+            <div class="program-card">
+                <img src="images/medical.jpg" alt="Medical Outreach">
+                <h3>Medical Outreach</h3>
+                <p>Free medical camps and health education for the community. Next event: July 2025.</p>
+            </div>
+            <div class="program-card">
+                <img src="images/evangelism.jpg" alt="Evangelism">
+                <h3>Evangelism & Youth Ministry</h3>
+                <p>Spreading the Gospel and nurturing youth through music, drama, and discipleship.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Masaba Hope Center Ministry. All Rights Reserved.</p>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="programs.html">Programs</a>
+                <a href="donate.html">Donate</a>
+                <a href="contact.html">Contact Us</a>
+                <a href="privacy terms.html">Privacy Policy & Terms</a>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
