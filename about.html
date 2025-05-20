@@ -8,9 +8,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Styles -->
     <style>
-         body {
+        body {
             font-family: 'Lato', 'Inter', Arial, sans-serif;
-            background: linear-gradient(135deg, #28a745 0%, #a8e063 100%) !important; /* Green to light green */
+            background: linear-gradient(135deg, #28a745 0%, #a8e063 100%) !important;
         }
         .header {
             background-color: #007bff;
@@ -36,6 +36,8 @@
         .about-image img {
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 100%;
+            height: auto;
         }
         .donate-button {
             display: inline-block;
@@ -54,7 +56,7 @@
         .map-container {
             position: relative;
             overflow: hidden;
-            padding-top: 56.25%; /* Aspect ratio for 16:9 */
+            padding-top: 56.25%;
         }
         .map-container iframe {
             position: absolute;
@@ -93,9 +95,13 @@
         }
         .leader-photo {
             flex: 0 0 120px;
+            width: 120px;
+            height: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
+            overflow: hidden;
+            background: #fff;
         }
         .leader-photo img {
             width: 110px;
@@ -104,6 +110,7 @@
             border-radius: 50%;
             border: 5px solid #007bff;
             box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+            display: block;
             background: #fff;
         }
         .leader-info {
@@ -140,7 +147,6 @@
                 margin-bottom: 8px;
             }
         }
-        /* Footer */
         footer {
             background-color: #222;
             color: white;
@@ -262,7 +268,7 @@
                     <div class="leader-role">Field Officer</div>
                     <div class="leader-phone">Phone: +254 743058862</div>
                     <div class="leader-desc">
-                        Ms. Josephine Ndege coordinates outreach activities, monitors children's welfare, and liaises with local communities. He ensures that the center's programs are effectively implemented on the ground.
+                        Ms. Josephine Ndege coordinates outreach activities, monitors children's welfare, and liaises with local communities. She ensures that the center's programs are effectively implemented on the ground.
                     </div>
                 </div>
             </div>
@@ -276,7 +282,7 @@
                     <div class="leader-role">Feeding Program Coordinator</div>
                     <div class="leader-phone">Phone: +254 712705945</div>
                     <div class="leader-desc">
-                        Grace oversees the planning and delivery of daily meals, manages food supplies, and ensures nutritional standards for all children at the center.
+                        Mary oversees the planning and delivery of daily meals, manages food supplies, and ensures nutritional standards for all children at the center.
                     </div>
                 </div>
             </div>
@@ -300,39 +306,42 @@
                     <img src="images/Elias-Monitoring.jpg" alt="Monitoring and Evaluation Photo">
                 </div>
                 <div class="leader-info">
-                    <h3>ELias Wambura Masire</h3>
+                    <h3>Elias Wambura Masire</h3>
                     <div class="leader-role">Monitoring & Evaluation</div>
                     <div class="leader-phone">Phone: +254 791901692</div>
                     <div class="leader-desc">
-                        Janet tracks program outcomes, analyzes data, and reports on impact. She ensures accountability and continuous improvement in all center activities.
+                        Elias tracks program outcomes, analyzes data, and reports on impact. He ensures accountability and continuous improvement in all center activities.
                     </div>
                 </div>
             </div>
-            <!-- Coodination -->
+            <!-- Coordinator -->
             <div class="leader-card">
                 <div class="leader-photo">
-                    <img src="images/Beatrice-coodinator.jpg" alt="Monitoring and Evaluation Photo">
+                    <img src="images/Beatrice-coodinator.jpg" alt="Coordinator Photo">
                 </div>
                 <div class="leader-info">
                     <h3>Beatrice Robi Masire</h3>
-                    <div class="leader-role">Coodinator </div>
+                    <div class="leader-role">Coordinator</div>
                     <div class="leader-phone">Phone: +254 769597391</div>
                     <div class="leader-desc">
-                   Beatrice is the one incharge of coodinating all programs to ensure timely delivery of activities. She has mastered the art of collaboration between various tasks and resources to achieve the perfect results.
+                        Beatrice is in charge of coordinating all programs to ensure timely delivery of activities. She has mastered the art of collaboration between various tasks and resources to achieve the perfect results.
                     </div>
-                    <!-- Education program -->
+                </div>
+            </div>
+            <!-- Education program -->
             <div class="leader-card">
                 <div class="leader-photo">
-                    <img src="images/samwel-education program.jpg" alt="Monitoring and Evaluation Photo">
+                    <img src="images/samwel-education program.jpg" alt="Education Program Photo">
                 </div>
                 <div class="leader-info">
                     <h3>Samwel Marwa Masire</h3>
-                    <div class="leader-role">Education program </div>
+                    <div class="leader-role">Education Program</div>
                     <div class="leader-phone">Phone: +254 710368969</div>
                     <div class="leader-desc">
-                   Samwel brings the education program to its unique function through his vast experience in community work. He is the pillar to our education program. We are very lucky to have him.
-                   </div>
-              
+                        Samwel brings the education program to its unique function through his vast experience in community work. He is the pillar to our education program. We are very lucky to have him.
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Mission Statement Section -->
