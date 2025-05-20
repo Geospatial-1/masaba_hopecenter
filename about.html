@@ -6,11 +6,164 @@
     <title>About Us - Masaba Hope Center</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-     <!-- Navigation Menu -->
+    <!-- Custom Styles -->
+    <style>
+         body {
+            font-family: 'Lato', 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #28a745 0%, #a8e063 100%) !important; /* Green to light green */
+        }
+        .header {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+        }
+        .header h1 {
+            font-size: 3rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .header p {
+            font-size: 1.2rem;
+        }
+        .about-image {
+            background: #28a745;
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .about-image img {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .donate-button {
+            display: inline-block;
+            background-color: yellow;
+            color: black;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .donate-button:hover {
+            background-color: #ffd700;
+        }
+        .map-container {
+            position: relative;
+            overflow: hidden;
+            padding-top: 56.25%; /* Aspect ratio for 16:9 */
+        }
+        .map-container iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%; border: 0;
+        }
+        /* Leadership Section */
+        .leadership-section {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.09);
+            padding: 36px 24px;
+            max-width: 1100px;
+            margin: 40px auto 32px auto;
+        }
+        .leadership-section h2 {
+            font-family: 'Playfair Display', serif;
+            color: #007bff;
+            font-size: 2rem;
+            margin-bottom: 32px;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+        .leader-card {
+            background: #f6faff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            padding: 24px 18px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            transition: box-shadow 0.2s;
+        }
+        .leader-card:hover {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.13);
+        }
+        .leader-photo {
+            flex: 0 0 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .leader-photo img {
+            width: 110px;
+            height: 110px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 5px solid #007bff;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+            background: #fff;
+        }
+        .leader-info {
+            flex: 1 1 300px;
+        }
+        .leader-info h3 {
+            font-family: 'Playfair Display', serif;
+            color: #28a745;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+        .leader-role {
+            font-size: 1.1rem;
+            color: #007bff;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+        .leader-phone {
+            font-size: 1rem;
+            color: #d9534f;
+            margin-bottom: 8px;
+        }
+        .leader-desc {
+            font-size: 1.05rem;
+            color: #333;
+        }
+        @media (max-width: 900px) {
+            .leader-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 14px;
+            }
+            .leader-photo {
+                margin-bottom: 8px;
+            }
+        }
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: white;
+            text-align: center;
+            padding: 18px 20px 10px 20px;
+            font-family: 'Inter', 'Lato', Arial, sans-serif;
+        }
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
     <nav class="navbar navbar-light bg-primary sticky-top">
         <div class="container d-flex justify-content-between align-items-center">
             <a class="navbar-brand text-white d-flex align-items-center" href="index.html">
-                <img src="images/logo.png" alt="logo" width="50" height="50" class="me-2">
+                <img src="images/logo.JPG" alt="logo" width="50" height="50" class="me-2">
                 <span class="fw-bold">Masaba Hope Center</span>
             </a>
             <ul class="navbar-nav d-flex flex-row">
@@ -38,67 +191,7 @@
             </ul>
         </div>
     </nav>
-    <!-- Custom Styles -->
-    <style>
-        body {
-            font-family: 'Lato', sans-serif;
-            background-color: #f9f9f9;
-        }
 
-        .header {
-            background-color: #007bff;
-            color: white;
-            text-align: center;
-            padding: 50px 20px;
-        }
-
-        .header h1 {
-            font-size: 3rem;
-            font-family: 'Playfair Display', serif;
-        }
-
-        .header p {
-            font-size: 1.2rem;
-        }
-
-        .about-image img {
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .donate-button {
-            display: inline-block;
-            background-color: yellow;
-            color: black;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s ease;
-        }
-
-        .donate-button:hover {
-            background-color: #ffd700;
-        }
-
-        .map-container {
-            position: relative;
-            overflow: hidden;
-            padding-top: 56.25%; /* Aspect ratio for 16:9 */
-        }
-
-        .map-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: 0;
-        }
-    </style>
-</head>
-<body>
     <!-- Header Section -->
     <header class="header">
         <h1>About Us</h1>
@@ -112,7 +205,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col-md-6 about-image">
-                        <img src="images/logo.png" alt="About Masaba Hope Center" class="img-fluid">
+                        <img src="images/logo.JPG" alt="About Masaba Hope Center" class="img-fluid">
                     </div>
                     <div class="col-md-6 about-content">
                         <h2 class="mb-4">Who We Are</h2>
@@ -123,6 +216,95 @@
                             In a world where many children face unimaginable hardships, Masaba Hope Center stands as a godsend, offering love, care, and opportunities to those who need it most. We believe that every child deserves a chance to dream, to grow, and to thrive.
                         </p>
                         <a href="donate.html" class="donate-button mt-3">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership Structure Section -->
+        <section class="leadership-section">
+            <h2>Leadership Structure</h2>
+            <!-- CEO -->
+            <div class="leader-card">
+                <div class="leader-photo">
+                    <img src="images/ceo.jpg" alt="CEO Photo">
+                </div>
+                <div class="leader-info">
+                    <h3>Rev. Joseph Maroa Itembe</h3>
+                    <div class="leader-role">Chief Executive Officer (CEO)</div>
+                    <div class="leader-phone">Phone: +254 712 345678</div>
+                    <div class="leader-desc">
+                        As CEO, Rev. Joseph Maroa Itembe provides overall vision, leadership, and strategic direction for Masaba Hope Center. He ensures the organization fulfills its mission to empower vulnerable children and oversees all major programs and partnerships.
+                    </div>
+                </div>
+            </div>
+            <!-- Administrative Assistant -->
+            <div class="leader-card">
+                <div class="leader-photo">
+                    <img src="images/admin_assistant.jpg" alt="Administrative Assistant Photo">
+                </div>
+                <div class="leader-info">
+                    <h3>Mary Atieno</h3>
+                    <div class="leader-role">Administrative Assistant</div>
+                    <div class="leader-phone">Phone: +254 722 111222</div>
+                    <div class="leader-desc">
+                        Mary manages daily office operations, correspondence, and record-keeping. She supports the CEO and staff, ensuring smooth communication and efficient administration across all departments.
+                    </div>
+                </div>
+            </div>
+            <!-- Field Officer -->
+            <div class="leader-card">
+                <div class="leader-photo">
+                    <img src="images/field_officer.jpg" alt="Field Officer Photo">
+                </div>
+                <div class="leader-info">
+                    <h3>Samuel Mwita</h3>
+                    <div class="leader-role">Field Officer</div>
+                    <div class="leader-phone">Phone: +254 733 222333</div>
+                    <div class="leader-desc">
+                        Samuel coordinates outreach activities, monitors children's welfare, and liaises with local communities. He ensures that the center's programs are effectively implemented on the ground.
+                    </div>
+                </div>
+            </div>
+            <!-- Feeding Program Coordinator -->
+            <div class="leader-card">
+                <div class="leader-photo">
+                    <img src="images/feeding_coordinator.jpg" alt="Feeding Program Coordinator Photo">
+                </div>
+                <div class="leader-info">
+                    <h3>Grace Nyaboke</h3>
+                    <div class="leader-role">Feeding Program Coordinator</div>
+                    <div class="leader-phone">Phone: +254 744 333444</div>
+                    <div class="leader-desc">
+                        Grace oversees the planning and delivery of daily meals, manages food supplies, and ensures nutritional standards for all children at the center.
+                    </div>
+                </div>
+            </div>
+            <!-- Advocacy and Mobilization -->
+            <div class="leader-card">
+                <div class="leader-photo">
+                    <img src="images/advocacy.jpg" alt="Advocacy and Mobilization Photo">
+                </div>
+                <div class="leader-info">
+                    <h3>Peter Ochieng</h3>
+                    <div class="leader-role">Advocacy & Mobilization</div>
+                    <div class="leader-phone">Phone: +254 755 444555</div>
+                    <div class="leader-desc">
+                        Peter leads advocacy campaigns, mobilizes community support, and builds partnerships with stakeholders to advance the center's mission and visibility.
+                    </div>
+                </div>
+            </div>
+            <!-- Monitoring and Evaluation -->
+            <div class="leader-card">
+                <div class="leader-photo">
+                    <img src="images/monitoring.jpg" alt="Monitoring and Evaluation Photo">
+                </div>
+                <div class="leader-info">
+                    <h3>Janet Moraa</h3>
+                    <div class="leader-role">Monitoring & Evaluation</div>
+                    <div class="leader-phone">Phone: +254 766 555666</div>
+                    <div class="leader-desc">
+                        Janet tracks program outcomes, analyzes data, and reports on impact. She ensures accountability and continuous improvement in all center activities.
                     </div>
                 </div>
             </div>
