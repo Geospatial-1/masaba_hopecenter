@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reported Posts - Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { font-family: 'Inter', Arial, sans-serif; background: linear-gradient(120deg, #f9f9f9 60%, #e3f6fc 100%); margin: 0; }
+        .container { max-width: 950px; margin: 48px auto; background: #fff; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.10); padding: 38px 28px 28px 28px; position: relative; }
+        h1 { color: #d9534f; font-family: 'Playfair Display', serif; margin-bottom: 18px; }
+        .report-card { border: 2px solid #00b8d9; border-radius: 12px; margin-bottom: 28px; padding: 22px 20px 18px 20px; background: linear-gradient(90deg, #fffbe6 80%, #e3f6fc 100%); box-shadow: 0 2px 12px rgba(0,184,217,0.07);}
+        .report-meta { color: #007bff; font-size: 1.01rem; margin-bottom: 8px; }
+        .report-reason { font-size: 1.13rem; margin-bottom: 8px; color: #222; }
+        .report-actions { margin-top: 12px; }
+        .report-actions button { background: #007bff; color: #fff; border: none; border-radius: 6px; padding: 7px 18px; font-weight: bold; cursor: pointer; margin-right: 10px; font-size: 1rem; transition: background 0.2s; }
+        .report-actions button.edit-btn { background: #28a745; }
+        .report-actions button.delete-btn { background: #d9534f; }
+        .report-actions button:hover { opacity: 0.88; }
+        .login-modal { display: flex; flex-direction: column; align-items: center; justify-content: center; position: fixed; left: 0; top: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.7); z-index: 1000; }
+        .login-box { background: #fff; border-radius: 14px; padding: 38px 28px; box-shadow: 0 8px 32px rgba(0,0,0,0.18); max-width: 370px; width: 95vw; display: flex; flex-direction: column; gap: 16px; }
+        .login-box h2 { color: #007bff; margin-bottom: 10px; }
+        .login-box input { padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1.05rem; }
+        .login-box button { background: #007bff; color: white; border: none; padding: 10px 18px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .login-box button:hover { background: #0056b3; }
+        .hidden { display: none !important; }
+        .topbar {
+            position: absolute; top: 0; right: 0; padding: 18px 24px 0 0; z-index: 10;
+        }
+        .back-btn {
+            background: #ffc107;
+            color: #222;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 22px;
+            font-weight: bold;
+            font-size: 1.08rem;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(255,193,7,0.13);
+            transition: background 0.2s;
+        }
+        .back-btn:hover { background: #ff9800; color: #fff; }
+        .notification-bar {
+            background: #e3f6fc;
+            color: #007bff;
+            border-left: 5px solid #00b8d9;
+            padding: 12px 18px;
+            border-radius: 8px;
+            margin-bottom: 18px;
+            font-size: 1.08rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .notification-bar .respond-btn {
+            background: #00b8d9;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 5px 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .notification-bar .respond-btn:hover { background: #007bff; }
+        @media (max-width: 700px) {
+            .container { padding: 12px 2vw 12px 2vw; }
+            .login-box { padding: 18px 6vw; }
+            .topbar { padding: 10px 10px 0 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-modal" id="loginModal">
+        <form class="login-box" id="loginForm" autocomplete="on">
+            <h2>Admin Login</h2>
+            <input type="email" id="adminEmail" placeholder="Admin Email" required autocomplete="username">
+            <input type="password" id="adminPassword" placeholder="Password" required autocomplete="current-password">
+            <button type="submit">Login</button>
+            <div id="loginError" style="color:#d9534f;font-size:0.98rem;"></div>
+        </form>
+    </div>
+    <div class="container hidden" id="reportsContainer">
+        <div class="topbar">
+            <button class="back-btn" onclick="window.location.href='blog.html'">Back Home</button>
+        </div>
+        <h1>Reported Posts & Images</h1>
+        <div class="notification-bar" id="notificationBar" style="display:none;">
+            <span id="notificationText"></span>
+            <button class="respond-btn" onclick="respondToNotification()">Respond to Notification</button>
+        </div>
+        <div id="reportsList"></div>
+    </div>
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
+        import { getDatabase, ref, get, remove } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js";
+
+        // Firebase config (use your own config here)
+        const firebaseConfig = {
+            apiKey: "AIzaSyC7B8c_s6x9vadzJqTV_iiGyGEoOMVSRls",
+            authDomain: "masabahopecenter.firebaseapp.com",
+            databaseURL: "https://masabahopecenter-default-rtdb.firebaseio.com",
+            projectId: "masabahopecenter",
+            storageBucket: "masabahopecenter.appspot.com",
+            messagingSenderId: "862140344042",
+            appId: "1:862140344042:web:a39262416ca525ab7a9993"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getDatabase(app);
+        const auth = getAuth(app);
+
+        // --- Admin Login ---
+        const loginModal = document.getElementById('loginModal');
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+        const reportsContainer = document.getElementById('reportsContainer');
+        const notificationBar = document.getElementById('notificationBar');
+        const notificationText = document.getElementById('notificationText');
+
+        loginForm.onsubmit = async function(e) {
+            e.preventDefault();
+            loginError.textContent = '';
+            const email = document.getElementById('adminEmail').value.trim();
+            const password = document.getElementById('adminPassword').value.trim();
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+            } catch (err) {
+                loginError.textContent = "Invalid credentials or not an admin.";
+            }
+        };
+
+        onAuthStateChanged(auth, user => {
+            if (user && (user.email === "admin20@masaba.co.ke" || user.email === "hopeuser@masaba.co.ke")) {
+                loginModal.classList.add('hidden');
+                reportsContainer.classList.remove('hidden');
+                loadReports();
+                showNotification("You have new reports. Please review and respond.");
+            } else {
+                loginModal.classList.remove('hidden');
+                reportsContainer.classList.add('hidden');
+            }
+        });
+
+        // --- Load Reports ---
+        async function loadReports() {
+            const reportsList = document.getElementById('reportsList');
+            reportsList.innerHTML = '<em>Loading...</em>';
+            const reportsRef = ref(db, 'reports');
+            const snapshot = await get(reportsRef);
+            if (!snapshot.exists()) {
+                reportsList.innerHTML = '<em>No reports found.</em>';
+                return;
+            }
+            const reportsArr = [];
+            snapshot.forEach(child => {
+                reportsArr.push({ ...child.val(), key: child.key });
+            });
+            // Show most recent first
+            reportsArr.sort((a, b) => new Date(b.date) - new Date(a.date));
+            reportsList.innerHTML = reportsArr.map(report => `
+                <div class="report-card">
+                    <div class="report-meta">
+                        <b>Reported by:</b> ${report.name} (${report.email})<br>
+                        <b>Date:</b> ${new Date(report.date).toLocaleString()}
+                    </div>
+                    <div class="report-meta"><b>Post Title:</b> ${report.postTitle || 'N/A'}</div>
+                    <div class="report-reason"><b>Reason:</b> ${report.reason}</div>
+                    <div class="report-meta"><b>Post ID:</b> ${report.postId || 'N/A'}${report.imageUrl ? `<br><b>Image:</b> <a href="${report.imageUrl}" target="_blank">View Image</a>` : ''}</div>
+                    <div class="report-actions">
+                        <button class="edit-btn" onclick="editReportedPost('${report.postId || ''}')">Edit This Post</button>
+                        <button class="delete-btn" onclick="deleteReport('${report.key}')">Delete Report</button>
+                        <a href="contact.html?subject=Report%20on%20${encodeURIComponent(report.postTitle || '')}&body=Regarding%20the%20report%20on%20post%20ID%20${report.postId || ''}%3A%0A%0A${encodeURIComponent(report.reason)}%0A%0AReporter:%20${encodeURIComponent(report.name)}%20(${encodeURIComponent(report.email)})" target="_blank" style="background:#00b8d9;color:#fff;border-radius:4px;padding:7px 14px;text-decoration:none;font-weight:bold;margin-left:8px;">Contact Reporter</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // --- Edit Post (pull to draft for editing) ---
+        window.editReportedPost = async function(postId) {
+            if (!postId) return alert("No post ID found for this report.");
+            sessionStorage.setItem('editPostId', postId);
+            window.location.href = "blog.html#edit";
+        };
+
+        // --- Delete Report ---
+        window.deleteReport = async function(reportKey) {
+            if (!confirm("Delete this report?")) return;
+            await remove(ref(db, 'reports/' + reportKey));
+            loadReports();
+        };
+
+        // --- Notification Bar ---
+        function showNotification(msg) {
+            notificationText.textContent = msg;
+            notificationBar.style.display = '';
+        }
+        window.respondToNotification = function() {
+            window.location.href = "contact.html";
+        };
+
+        // --- Logout on double click title (for admin) ---
+        document.querySelector('h1').ondblclick = () => signOut(auth);
+    </script>
+</body>
+</html>
