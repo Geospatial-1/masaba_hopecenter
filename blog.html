@@ -11,7 +11,7 @@
             font-family: 'Inter', 'Lato', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background: linear-gradient(120deg, #f9f9f9 60%, #e3f6fc 100%);
         }
         .navbar {
             background-color: #28a745;
@@ -68,487 +68,235 @@
             margin: 20px auto;
             padding: 0 12px;
         }
-        .feature-section {
-            background: #fffbe6;
-            border: 2px solid #ffc107;
-            border-radius: 10px;
-            padding: 24px 18px;
-            margin-bottom: 32px;
-            box-shadow: 0 4px 18px rgba(255,193,7,0.08);
+        /* DRAFT MODAL */
+        .draft-modal {
+            display: none;
+            position: fixed;
+            left: 0; top: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.85);
+            z-index: 4000;
+            align-items: flex-start;
+            justify-content: center;
+            overflow-y: auto;
         }
-        .feature-section h2 {
-            color: #d9534f;
-            font-family: 'Playfair Display', serif;
-            margin-top: 0;
+        .draft-modal.active { display: flex; }
+        .draft-modal-content {
+            background: #fff;
+            border-radius: 14px;
+            padding: 38px 28px 28px 28px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            max-width: 700px;
+            width: 98vw;
+            margin: 40px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
         }
-        .feature-section .post-meta {
-            color: #888;
-            font-size: 1rem;
+        .draft-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
-        .feature-section .feature-body {
+        .draft-header h2 {
+            margin: 0;
+            font-size: 2rem;
+            color: #007bff;
+        }
+        .draft-list {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .draft-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 16px 14px;
+            margin-bottom: 14px;
+            background: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        .draft-title {
             font-size: 1.15rem;
-            color: #333;
-            margin-top: 10px;
+            font-weight: bold;
+            color: #d9534f;
         }
-        .expand-btn {
+        .draft-meta {
+            color: #888;
+            font-size: 0.98rem;
+        }
+        .draft-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 6px;
+        }
+        .draft-actions button {
             background: #007bff;
             color: #fff;
             border: none;
             border-radius: 5px;
-            padding: 8px 18px;
+            padding: 6px 16px;
             font-weight: bold;
             cursor: pointer;
-            margin: 18px auto 0 auto;
-            display: block;
+            font-size: 1rem;
             transition: background 0.2s;
         }
-        .expand-btn:hover {
-            background: #0056b3;
-        }
-        .post-card {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-        .post-card:hover {
-            transform: scale(1.01);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.13);
-        }
-        .post-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-        .post-content {
-            padding: 18px;
-        }
-        .post-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #d9534f;
-            margin: 0 0 8px 0;
-            font-family: 'Playfair Display', serif;
-        }
-        .post-meta {
-            font-size: 0.95rem;
-            color: #888;
-            margin-bottom: 10px;
-        }
-        .post-highlight {
-            font-size: 1.08rem;
-            color: #333;
-            line-height: 1.7;
-        }
-        .archive-label {
-            color: #ffc107;
-            font-weight: bold;
-            margin-top: 8px;
-        }
-        .likes-share-row {
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            margin-top: 10px;
-        }
-        .like-btn, .share-btn, .copy-link-btn {
-            background: #f6f6f6;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 4px 10px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .like-btn.liked {
-            background: #ffc107;
-            color: #d9534f;
-            border-color: #ffc107;
-        }
-        .like-btn:hover, .share-btn:hover, .copy-link-btn:hover {
-            background: #e3e3e3;
-        }
-        /* Full Post Modal */
-        .full-post-modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0; top: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.85);
-            justify-content: center;
-            align-items: center;
-        }
-        .full-post-content {
-            background: #fff;
-            border-radius: 10px;
-            max-width: 700px;
-            width: 95vw;
-            max-height: 90vh;
-            overflow-y: auto;
-            padding: 32px 20px 20px 20px;
-            position: relative;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-        }
-        .full-post-content img {
-            width: 100%;
-            max-height: 320px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 18px;
-        }
-        .full-post-title {
-            font-size: 2rem;
-            font-family: 'Playfair Display', serif;
-            color: #d9534f;
-            margin-bottom: 8px;
-        }
-        .full-post-meta {
-            font-size: 1rem;
-            color: #888;
-            margin-bottom: 18px;
-        }
-        .full-post-body {
-            font-size: 1.13rem;
-            color: #222;
-            line-height: 2;
-            margin-bottom: 24px;
-        }
-        .full-post-actions {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-        .full-post-actions button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 8px;
-        }
-        .full-post-actions button:hover {
-            background: #0056b3;
-        }
-        .exit-btn {
-            position: absolute;
-            top: 12px;
-            right: 18px;
+        .draft-actions button.delete-btn {
             background: #d9534f;
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 36px;
-            height: 36px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            z-index: 10;
         }
-        .exit-btn:hover {
-            background: #b52b1b;
+        .draft-actions button.delete-btn:hover {
+            background: #b52a1d;
         }
-        /* Comments Section */
-        .comments-section {
-            margin-top: 30px;
-            background: #f6f6f6;
-            border-radius: 8px;
-            padding: 18px 12px;
+        .draft-actions button.update-btn {
+            background: #ffc107;
+            color: #222;
         }
-        .comment-form {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-bottom: 18px;
+        .draft-actions button.update-btn:hover {
+            background: #ff9800;
+            color: #fff;
         }
-        .comment-form input, .comment-form textarea {
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
-        }
-        .comment-form button {
-            align-self: flex-end;
+        .draft-actions button.publish-btn {
             background: #28a745;
-            color: white;
-            border: none;
-            padding: 7px 18px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
         }
-        .comment-form button:hover {
-            background: #218838;
+        .draft-actions button.publish-btn:hover {
+            background: #1e7e34;
         }
-        .emoji-btn {
-            background: #fffbe6;
-            border: 1px solid #ffc107;
-            border-radius: 4px;
-            font-size: 1.3rem;
-            cursor: pointer;
-            margin-left: 4px;
+        .draft-actions button.view-btn {
+            background: #6c757d;
         }
-        .comment-list {
-            margin-top: 10px;
-        }
-        .comment {
-            background: linear-gradient(90deg, #e3ffe6 0%, #f6f6f6 100%);
-            border-radius: 6px;
-            padding: 10px 12px;
-            margin-bottom: 10px;
-            border: 1px solid #b2e6c7;
-            position: relative;
-        }
-        .comment-author {
-            font-weight: bold;
-            color: #007bff;
-        }
-        .comment-date {
-            font-size: 0.9rem;
-            color: #888;
-            margin-left: 8px;
-        }
-        .comment-body {
-            margin: 6px 0 0 0;
-            font-size: 1.08rem;
-            word-break: break-word;
-        }
-        .comment-actions {
-            margin-top: 4px;
-            display: flex;
-            gap: 10px;
-        }
-        .comment-actions button {
-            background: none;
-            color: #d9534f;
-            border: none;
-            font-size: 0.95rem;
-            cursor: pointer;
-            padding: 0;
-        }
-        .comment-actions button.reply-btn {
-            color: #007bff;
-        }
-        .comment-actions button.edit-btn {
-            color: #28a745;
-        }
-        .comment-actions button.flag-btn {
-            color: #ffc107;
-        }
-        .flagged {
-            background: #fff3cd !important;
-            border-color: #ffeeba !important;
-        }
-        .reply-list {
-            margin-left: 24px;
-            margin-top: 6px;
-        }
-        .hidden { display: none !important; }
-        /* Login Modal */
-        .login-modal {
-            display: none;
-            position: fixed;
-            z-index: 3000;
-            left: 0; top: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
-        }
-        .login-modal-content {
-            background: #fff;
-            border-radius: 10px;
-            padding: 32px 24px;
-            max-width: 350px;
-            width: 95vw;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-        .login-modal-content h2 {
-            font-family: 'Playfair Display', serif;
-            color: #007bff;
-            margin-bottom: 10px;
-        }
-        .login-modal-content input {
-            padding: 8px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            font-size: 1rem;
-        }
-        .login-modal-content button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 8px 18px;
-            border-radius: 4px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .login-modal-content button:hover {
-            background: #0056b3;
-        }
-        /* DRAFT MODAL (Responsive, Fixed Toolbar/Bottom) */
-        .draft-modal {
-            display: none;
-            position: fixed;
-            z-index: 3000;
-            left: 0; top: 0; width: 100vw; height: 100vh;
-            background: rgba(0,0,0,0.7);
-            justify-content: center;
-            align-items: center;
-        }
-        .draft-modal-content {
-            background: #fff;
-            border-radius: 10px;
-            padding: 0;
-            max-width: 600px;
-            width: 98vw;
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-            position: relative;
-        }
-        .draft-toolbar {
-            position: sticky;
-            top: 0;
-            background: #f6f6f6;
-            border-bottom: 1px solid #eee;
-            z-index: 2;
-            display: flex;
-            gap: 6px;
-            padding: 10px 16px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .draft-toolbar label {
-            margin: 0 8px 0 0;
-        }
-        .draft-editor-area {
-            flex: 1 1 auto;
-            overflow-y: auto;
-            padding: 18px 16px 18px 16px;
-            min-height: 200px;
-            max-height: 50vh;
-        }
-        .draft-title-input {
-            width: 100%;
-            font-size: 1.2rem;
-            padding: 8px;
-            margin-bottom: 10px;
-            border-radius: 4px;
-            border: 1px solid #ccc;
+        .draft-actions button.view-btn:hover {
+            background: #343a40;
         }
         .draft-editor {
-            min-height: 120px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+            margin-top: 18px;
+            background: #f6f6f6;
+            border-radius: 8px;
+            padding: 18px;
+        }
+        .draft-editor input {
+            width: 100%;
+            margin-bottom: 10px;
             padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
             font-size: 1rem;
-            background: #f9f9f9;
-            margin-bottom: 10px;
         }
-        .draft-images-list {
+        .draft-editor label {
+            font-weight: bold;
+            margin-bottom: 4px;
+            display: block;
+        }
+        .draft-editor .editor-actions {
             display: flex;
+            gap: 10px;
+        }
+        .close-draft-btn {
+            background: #d9534f;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 22px;
+            font-weight: bold;
+            font-size: 1.08rem;
+            cursor: pointer;
+            margin-left: auto;
+            transition: background 0.2s;
+        }
+        .close-draft-btn:hover { background: #b52a1d; }
+        .draft-empty {
+            color: #888;
+            font-style: italic;
+            margin: 24px 0;
+            text-align: center;
+        }
+        .draft-editor .image-preview-list {
+            display: flex;
+            gap: 10px;
             flex-wrap: wrap;
-            gap: 8px;
             margin-bottom: 10px;
         }
-        .draft-image-thumb {
+        .draft-editor .image-preview-item {
             position: relative;
+            display: inline-block;
+        }
+        .draft-editor .image-preview-item img {
             width: 80px;
             height: 80px;
-            border-radius: 6px;
-            overflow: hidden;
-            border: 1px solid #ccc;
-            background: #eee;
-        }
-        .draft-image-thumb img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid #ccc;
         }
-        .draft-image-remove {
+        .draft-editor .remove-image-btn {
             position: absolute;
-            top: 2px; right: 2px;
+            top: -8px;
+            right: -8px;
             background: #d9534f;
             color: #fff;
             border: none;
             border-radius: 50%;
-            width: 22px; height: 22px;
+            width: 22px;
+            height: 22px;
             font-size: 1rem;
             cursor: pointer;
-            z-index: 2;
         }
-        .draft-bottom-bar {
-            position: sticky;
-            bottom: 0;
+        /* Toolbar for formatting */
+        .draft-toolbar {
+            margin-bottom: 8px;
+        }
+        .draft-toolbar button {
             background: #f6f6f6;
-            border-top: 1px solid #eee;
-            z-index: 2;
-            display: flex;
-            gap: 10px;
-            justify-content: flex-end;
-            align-items: center;
-            padding: 12px 16px;
-        }
-        .draft-list {
-            padding: 12px 16px;
-            border-top: 1px solid #eee;
-            background: #fafafa;
-            max-height: 120px;
-            overflow-y: auto;
-        }
-        .draft-list-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #f6f6f6;
-            border-radius: 6px;
-            padding: 6px 10px;
-            margin-bottom: 6px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 4px;
+            padding: 4px 8px;
             font-size: 1rem;
-        }
-        .draft-list-item .delete-btn {
-            background: #d9534f;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 2px 8px;
-            font-size: 0.95rem;
             cursor: pointer;
         }
-        .draft-list-item .edit-btn {
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            padding: 2px 8px;
-            font-size: 0.95rem;
-            cursor: pointer;
-            margin-right: 6px;
+        .draft-toolbar button:hover {
+            background: #e3e3e3;
+        }
+        /* Rich text area */
+        #draftBodyInput {
+            min-height: 120px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+            background: #fff;
+            margin-bottom: 10px;
+        }
+        /* Blog post card */
+        .post-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+            margin-bottom: 28px;
+            padding: 22px 20px 18px 20px;
+        }
+        .post-title {
+            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif;
+            color: #007bff;
+            margin: 0 0 8px 0;
+        }
+        .post-meta {
+            color: #888;
+            font-size: 0.98rem;
+            margin-bottom: 10px;
+        }
+        .post-body {
+            font-size: 1.13rem;
+            color: #222;
+            margin-bottom: 10px;
+        }
+        .post-body img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 10px 0;
+            display: block;
         }
         @media (max-width: 700px) {
-            .header h1 { font-size: 1.4rem; }
-            .post-card img, .full-post-content img { height: 160px; }
-            .full-post-content { padding: 12px 4vw 12px 4vw; }
-            .draft-modal-content { max-width: 99vw; }
-            .draft-toolbar, .draft-bottom-bar, .draft-list { padding: 8px 4vw; }
-        }
-        @media (max-width: 500px) {
-            .container { padding: 0 2vw; }
-            .post-card .post-title, .full-post-title { font-size: 1.1rem; }
-            .draft-modal-content { max-width: 100vw; }
-            .draft-toolbar, .draft-bottom-bar, .draft-list { padding: 6px 2vw; }
+            .draft-modal-content { padding: 14px 2vw; }
         }
     </style>
 </head>
@@ -563,7 +311,7 @@
             <a href="donate.html">Donate</a>
             <a href="blog.html">Blog</a>
             <a href="contact.html">Contact</a>
-            <button class="login-btn" onclick="openLoginModal()">Author Login</button>
+            <button class="login-btn" onclick="openLoginModal()">Login</button>
         </div>
     </nav>
 
@@ -572,6 +320,27 @@
         <h1>Masaba News Updates</h1>
         <p>Stay updated with the latest news and stories</p>
     </header>
+
+    <!-- Admin Actions Bar (for admin only) -->
+    <div class="container" id="adminActionsBar" style="display:none;">
+        <div class="admin-actions-bar">
+            <button onclick="window.location.href='reported posts.html'">Reported Posts</button>
+            <button onclick="logout()">Logout</button>
+        </div>
+    </div>
+
+    <!-- Notification Bar for Reports -->
+    <div class="container" id="notificationBar" style="display:none;">
+        <div class="notification-bar">
+            <span id="notificationText"></span>
+            <button class="respond-btn" onclick="window.location.href='reported posts.html'">View Reports</button>
+        </div>
+    </div>
+
+    <!-- Search Bar -->
+    <div class="container">
+        <input type="text" id="searchInput" placeholder="Search posts by title..." style="width:100%;padding:10px 14px;font-size:1.1rem;border-radius:6px;border:1px solid #ccc;margin-bottom:18px;">
+    </div>
 
     <!-- Feature Post Section -->
     <div class="container" id="featureSection"></div>
@@ -583,51 +352,32 @@
 
     <!-- Login Modal -->
     <div class="login-modal" id="loginModal">
-        <div class="login-modal-content">
-            <h2>Author Login</h2>
-            <input type="text" id="username" placeholder="Username" autocomplete="username">
-            <input type="password" id="password" placeholder="Password" autocomplete="current-password">
-            <input type="text" id="authorName" placeholder="Your Name (for posts)">
-            <button onclick="login()">Login</button>
-        </div>
+        <form class="login-modal-content" id="loginForm" autocomplete="on" onsubmit="return false;">
+            <h2>Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email" required autocomplete="username">
+            <input type="password" id="loginPassword" placeholder="Password" required autocomplete="current-password">
+            <input type="text" id="loginDisplayName" placeholder="Your Name (for posts)" required>
+            <button type="submit">Login</button>
+            <div class="login-error" id="loginError"></div>
+        </form>
     </div>
 
-    <!-- Draft Modal (Responsive, Fixed Toolbar/Bottom, Images at Cursor, Autosave) -->
+    <!-- Draft Modal (Enhanced, overlays blog, does not hide it) -->
     <div class="draft-modal" id="draftModal">
         <div class="draft-modal-content">
-            <div class="draft-toolbar">
-                <label><input type="checkbox" id="featurePost"> Feature</label>
-                <button type="button" onclick="format('bold')" title="Bold"><b>B</b></button>
-                <button type="button" onclick="format('italic')" title="Italic"><i>I</i></button>
-                <button type="button" onclick="format('underline')" title="Underline"><u>U</u></button>
-                <button type="button" onclick="format('insertUnorderedList')" title="Bullets">&#8226; List</button>
-                <button type="button" onclick="format('insertOrderedList')" title="Numbered List">1. List</button>
-                <button type="button" onclick="format('justifyLeft')" title="Align Left">&#8676;</button>
-                <button type="button" onclick="format('justifyCenter')" title="Align Center">&#8596;</button>
-                <button type="button" onclick="format('justifyRight')" title="Align Right">&#8677;</button>
-                <button type="button" onclick="format('foreColor','red')" style="color:red;" title="Red">A</button>
-                <button type="button" onclick="format('foreColor','blue')" style="color:blue;" title="Blue">A</button>
-                <button type="button" onclick="format('foreColor','green')" style="color:green;" title="Green">A</button>
-                <input type="file" id="insertImageInput" accept="image/*" style="display:none" multiple>
-                <button type="button" onclick="triggerInsertImage()" title="Insert Image">&#128247; Insert Image</button>
+            <div class="draft-header">
+                <h2>Drafts & Posts</h2>
+                <button class="close-draft-btn" onclick="closeDraftModal()">Close</button>
             </div>
-            <div class="draft-editor-area" id="draftEditorArea">
-                <input type="text" id="draftTitle" class="draft-title-input" placeholder="Post Title">
-                <div class="draft-images-list" id="draftImagesList"></div>
-                <div id="draftBody" class="draft-editor" contenteditable="true"></div>
+            <div>
+                <b>Welcome, <span id="draftUserName"></span>!</b>
             </div>
-            <div class="draft-bottom-bar">
-                <button type="button" onclick="saveDraftManually()" style="background:#ffc107;color:#222;">Save Draft</button>
-                <button type="button" onclick="publishDraft()" style="background:#28a745;">Publish Post</button>
-                <button type="button" onclick="closeDraftModal()" style="background:#d9534f;">Close</button>
+            <div>
+                <button onclick="openDraftEditor()" style="background:#28a745;color:#fff;padding:8px 18px;border-radius:6px;border:none;font-weight:bold;cursor:pointer;">+ New Draft</button>
             </div>
-            <div class="draft-list" id="draftList"></div>
+            <div id="draftListArea"></div>
+            <div id="draftEditorArea" style="display:none;"></div>
         </div>
-    </div>
-
-    <!-- Full Post Modal -->
-    <div class="full-post-modal" id="fullPostModal">
-        <div class="full-post-content" id="fullPostContent"></div>
     </div>
 
     <!-- Footer -->
@@ -636,11 +386,21 @@
         <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a>
     </footer>
 
-    <!-- Firebase SDK and Blog Logic -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-app.js";
-        import { getDatabase, ref, push, get, remove, set, update, onValue } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-database.js";
+        import { getDatabase, ref, push, get, remove, set, update } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-database.js";
+        import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-auth.js";
         import { getStorage, ref as sRef, uploadBytes, getDownloadURL, deleteObject } from "https://www.gstatic.com/firebasejs/11.7.3/firebase-storage.js";
+
+        // --- User Level Logic ---
+        function getUserLevel(email) {
+            if (!email) return null;
+            if (email.endsWith('@masaba.co.ke')) {
+                if (email.startsWith('admin')) return 'admin';
+                if (email.startsWith('hopeuser')) return 'author';
+            }
+            return 'author';
+        }
 
         // Firebase config
         const firebaseConfig = {
@@ -656,273 +416,209 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getDatabase(app);
+        const auth = getAuth(app);
         const storage = getStorage(app);
 
         let currentUser = null;
-        let authorName = '';
-        let isAdmin = false;
+        let userLevel = null;
+        let displayName = '';
+        let _allDrafts = [];
         let _allPosts = [];
-        let _featuredPost = null;
-        let _recentPosts = [];
-        let _otherPosts = [];
-        let _currentFullPostIndex = 0;
-        let _fullPostList = [];
+        let _draftImages = [];
+        let _draftBodyHtml = '';
 
-        // --- Load Posts from Firebase ---
-        async function loadPosts() {
-            const postsContainer = document.getElementById('postsContainer');
-            const featureSection = document.getElementById('featureSection');
-            const otherStoriesContainer = document.getElementById('otherStoriesContainer');
-            const expandBtn = document.getElementById('expandOtherStoriesBtn');
+        // --- Login Modal Logic ---
+        window.openLoginModal = function() {
+            document.getElementById('loginModal').classList.add('active');
+            document.getElementById('loginError').textContent = '';
+        };
+        window.logout = function() {
+            signOut(auth);
+            currentUser = null;
+            userLevel = null;
+            document.getElementById('adminActionsBar').style.display = 'none';
+            closeDraftModal();
+            document.getElementById('loginModal').classList.add('active');
+        };
+
+        function showDraftModalAfterLogin(user) {
+            document.getElementById('draftModal').classList.add('active');
+            document.getElementById('draftUserName').textContent = user?.displayName || user?.email || '';
+            loadUserDraftsAndPosts();
+        }
+        window.closeDraftModal = function() {
+            document.getElementById('draftModal').classList.remove('active');
+            document.getElementById('draftEditorArea').style.display = 'none';
+        };
+
+        // Handle login form submit
+        document.getElementById('loginForm').onsubmit = async function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+            const password = document.getElementById('loginPassword').value;
+            const name = document.getElementById('loginDisplayName').value.trim();
+            document.getElementById('loginError').textContent = '';
+            try {
+                const cred = await signInWithEmailAndPassword(auth, email, password);
+                currentUser = cred.user;
+                displayName = name;
+                userLevel = getUserLevel(email);
+                document.getElementById('loginModal').classList.remove('active');
+                if (userLevel === 'admin') {
+                    document.getElementById('adminActionsBar').style.display = '';
+                } else {
+                    document.getElementById('adminActionsBar').style.display = 'none';
+                }
+                showDraftModalAfterLogin(currentUser);
+            } catch (err) {
+                document.getElementById('loginError').textContent = "Invalid credentials or not authorized.";
+            }
+        };
+
+        // Always show draft modal after login (even on page reload)
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                currentUser = user;
+                userLevel = getUserLevel(user.email);
+                document.getElementById('loginModal').classList.remove('active');
+                if (userLevel === 'admin') {
+                    document.getElementById('adminActionsBar').style.display = '';
+                } else {
+                    document.getElementById('adminActionsBar').style.display = 'none';
+                }
+                showDraftModalAfterLogin(user);
+            }
+        });
+
+        // --- Drafts & Posts Logic ---
+        async function loadUserDraftsAndPosts() {
             const postsRef = ref(db, 'posts');
             const snapshot = await get(postsRef);
-            if (!snapshot.exists()) {
-                postsContainer.innerHTML = '<p>No posts available. Please create a post first.</p>';
-                featureSection.innerHTML = '';
-                otherStoriesContainer.innerHTML = '';
-                expandBtn.style.display = 'none';
-                _allPosts = [];
-                _featuredPost = null;
-                _recentPosts = [];
-                _otherPosts = [];
-                return;
-            }
-            const postsArr = [];
-            snapshot.forEach(child => {
-                postsArr.push({ ...child.val(), key: child.key });
-            });
-            // Sort by date descending (most recent first)
-            postsArr.sort((a, b) => new Date(b.date) - new Date(a.date));
-            // Find featured post (only one)
-            const featured = postsArr.find(p => p.feature === true || p.feature === "true");
-            _featuredPost = featured || null;
-            // Remove featured from list
-            let nonFeatured = postsArr.filter(p => p !== featured);
-            // Recent posts (up to 10)
-            _recentPosts = nonFeatured.slice(0, 10);
-            // Other posts (rest)
-            _otherPosts = nonFeatured.slice(10);
-            _allPosts = [ ...(featured ? [featured] : []), ...nonFeatured ];
-
-            // Render featured
-            if (_featuredPost) {
-                featureSection.innerHTML = `
-                    <div class="feature-section" onclick="showFullPostByKey('${_featuredPost.key}')">
-                        <h2>Feature Post: ${_featuredPost.title}</h2>
-                        <div class="post-meta">By ${_featuredPost.author || 'Admin'} | Published on: ${_featuredPost.date}</div>
-                        <img src="${_featuredPost.image ? _featuredPost.image : 'placeholder.jpg'}" alt="Feature Image" style="width:100%;max-height:260px;object-fit:cover;border-radius:8px;margin:12px 0;">
-                        <div class="feature-body">${_featuredPost.body}</div>
-                        ${renderLikesShareRow(_featuredPost)}
-                    </div>
-                `;
-            } else {
-                featureSection.innerHTML = '';
-            }
-
-            // Render recent posts
-            postsContainer.innerHTML = _recentPosts.map((post, idx) => `
-                <div class="post-card" onclick="showFullPostByKey('${post.key}')">
-                    <img src="${post.image ? post.image : 'placeholder.jpg'}" alt="Post Image">
-                    <div class="post-content">
-                        <h2 class="post-title">${post.title}</h2>
-                        <p class="post-meta">By ${post.author || 'Admin'} | Published on: ${post.date}</p>
-                        <div class="post-highlight">${post.body.replace(/<[^>]+>/g, '').substring(0, 180)}...</div>
-                        ${renderLikesShareRow(post)}
-                    </div>
-                </div>
-            `).join('');
-
-            // Render other stories (hidden by default)
-            if (_otherPosts.length > 0) {
-                otherStoriesContainer.innerHTML = `
-                    <h3 style="margin-top:32px;">Other Stories</h3>
-                    <div id="otherStoriesList" style="display:none;">
-                        ${_otherPosts.map(post => `
-                            <div class="post-card" onclick="showFullPostByKey('${post.key}')">
-                                <img src="${post.image ? post.image : 'placeholder.jpg'}" alt="Post Image">
-                                <div class="post-content">
-                                    <h2 class="post-title">${post.title}</h2>
-                                    <p class="post-meta">By ${post.author || 'Admin'} | Published on: ${post.date}</p>
-                                    <div class="post-highlight">${post.body.replace(/<[^>]+>/g, '').substring(0, 180)}...</div>
-                                    ${renderLikesShareRow(post)}
-                                </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-                expandBtn.style.display = '';
-            } else {
-                otherStoriesContainer.innerHTML = '';
-                expandBtn.style.display = 'none';
-            }
-        }
-
-        window.expandOtherStories = function() {
-            const list = document.getElementById('otherStoriesList');
-            const btn = document.getElementById('expandOtherStoriesBtn');
-            if (list.style.display === 'none') {
-                list.style.display = '';
-                btn.textContent = 'Hide Other Stories';
-            } else {
-                list.style.display = 'none';
-                btn.textContent = 'Show More Stories';
-            }
-        };
-
-        // --- Likes & Share Row ---
-        function renderLikesShareRow(post) {
-            const likes = post.likes || 0;
-            return `
-                <div class="likes-share-row" onclick="event.stopPropagation()">
-                    <button class="like-btn" onclick="likePost(event, '${post.key}')">👍 <span id="like-count-${post.key}">${likes}</span></button>
-                    <button class="share-btn" onclick="sharePost(event, '${post.key}')">Share</button>
-                    <button class="copy-link-btn" onclick="copyPostLink(event, '${post.key}')">Copy Link</button>
-                </div>
-            `;
-        }
-
-        window.likePost = async function(event, key) {
-            event.stopPropagation();
-            const likeKey = 'liked_' + key;
-            if (localStorage.getItem(likeKey)) return; // Prevent multiple likes per session
-            const postRef = ref(db, 'posts/' + key);
-            const snap = await get(postRef);
-            if (!snap.exists()) return;
-            const post = snap.val();
-            const newLikes = (post.likes || 0) + 1;
-            await update(postRef, { likes: newLikes });
-            localStorage.setItem(likeKey, '1');
-            document.getElementById('like-count-' + key).textContent = newLikes;
-        };
-
-        window.sharePost = function(event, key) {
-            event.stopPropagation();
-            const url = window.location.origin + window.location.pathname + '#post-' + key;
-            if (navigator.share) {
-                navigator.share({
-                    title: document.title,
-                    text: 'Check out this post!',
-                    url
+            _allDrafts = [];
+            _allPosts = [];
+            if (snapshot.exists()) {
+                snapshot.forEach(child => {
+                    const post = { ...child.val(), key: child.key };
+                    if (userLevel === 'admin') {
+                        if (post.status === 'draft') _allDrafts.push(post);
+                        if (post.status === 'published') _allPosts.push(post);
+                    } else if (userLevel === 'author') {
+                        if (post.level === 'author' && post.status === 'draft') _allDrafts.push(post);
+                        if (post.level === 'author' && post.status === 'published') _allPosts.push(post);
+                    }
                 });
-            } else {
-                window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
             }
-        };
-
-        window.copyPostLink = function(event, key) {
-            event.stopPropagation();
-            const url = window.location.origin + window.location.pathname + '#post-' + key;
-            navigator.clipboard.writeText(url);
-            alert('Post link copied!');
-        };
-
-        // --- Full Post Modal ---
-        window.showFullPostByKey = function(key) {
-            _fullPostList = _allPosts;
-            _currentFullPostIndex = _allPosts.findIndex(p => p.key === key);
-            showFullPost(_currentFullPostIndex);
-        };
-
-        function showFullPost(index) {
-            const modal = document.getElementById('fullPostModal');
-            const content = document.getElementById('fullPostContent');
-            const post = _fullPostList[index];
-            if (!post) return;
-            content.innerHTML = `
-                <button class="exit-btn" onclick="closeFullPost()">&times;</button>
-                <img src="${post.image ? post.image : 'placeholder.jpg'}" alt="Post Image">
-                <div class="full-post-title">${post.title}</div>
-                <div class="full-post-meta">By ${post.author || 'Admin'} | Published on: ${post.date}</div>
-                <div class="full-post-body">${post.body}</div>
-                <div class="full-post-actions">
-                    <button onclick="showPrevPost()" ${index === 0 ? 'disabled' : ''}>&larr; Previous</button>
-                    <button onclick="showNextPost()" ${index === _fullPostList.length-1 ? 'disabled' : ''}>Next &rarr;</button>
-                </div>
-                <div class="likes-share-row">
-                    <button class="like-btn" onclick="likePost(event, '${post.key}')">👍 <span id="like-count-${post.key}">${post.likes || 0}</span></button>
-                    <button class="share-btn" onclick="sharePost(event, '${post.key}')">Share</button>
-                    <button class="copy-link-btn" onclick="copyPostLink(event, '${post.key}')">Copy Link</button>
-                </div>
-                <div class="comments-section" id="commentsSection"></div>
-            `;
-            modal.style.display = 'flex';
-            loadComments(post.key);
+            renderDraftList();
         }
 
-        window.closeFullPost = function() {
-            document.getElementById('fullPostModal').style.display = 'none';
-        };
-
-        window.showPrevPost = function() {
-            if (_currentFullPostIndex > 0) {
-                _currentFullPostIndex--;
-                showFullPost(_currentFullPostIndex);
-            }
-        };
-        window.showNextPost = function() {
-            if (_currentFullPostIndex < _fullPostList.length-1) {
-                _currentFullPostIndex++;
-                showFullPost(_currentFullPostIndex);
-            }
-        };
-
-        // --- Login & Draft Logic ---
-        window.openLoginModal = function() {
-            document.getElementById('loginModal').style.display = 'flex';
-        };
-        window.login = function() {
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value.trim();
-            authorName = document.getElementById('authorName').value.trim();
-            if (username === 'admin20' && password === 'hope2020') {
-                currentUser = username;
-                isAdmin = true;
-                document.getElementById('loginModal').style.display = 'none';
-                window.openDraftModal();
+        function renderDraftList() {
+            const area = document.getElementById('draftListArea');
+            let html = '';
+            if (_allDrafts.length === 0 && _allPosts.length === 0) {
+                html = `<div class="draft-empty">No drafts or posts found.</div>`;
             } else {
-                alert('Invalid username or password.');
+                if (_allDrafts.length > 0) {
+                    html += `<h3>Drafts</h3><ul class="draft-list">`;
+                    _allDrafts.forEach(draft => {
+                        html += `<li class="draft-item">
+                            <div class="draft-title">${draft.title || '<em>Untitled Draft</em>'}</div>
+                            <div class="draft-meta">By ${draft.authorName || draft.authorEmail} (${draft.level || ''}) &middot; Last updated: ${draft.date || ''}</div>
+                            <div class="draft-actions">
+                                <button class="update-btn" onclick="window.editDraft('${draft.key}')">Edit</button>
+                                <button class="publish-btn" onclick="window.publishDraft('${draft.key}')">Publish</button>
+                                ${userLevel === 'admin' ? `<button class="delete-btn" onclick="window.deleteDraft('${draft.key}')">Delete</button>` : ''}
+                            </div>
+                        </li>`;
+                    });
+                    html += `</ul>`;
+                }
+                if (_allPosts.length > 0) {
+                    html += `<h3>Published Posts</h3><ul class="draft-list">`;
+                    _allPosts.forEach(post => {
+                        html += `<li class="draft-item">
+                            <div class="draft-title">${post.title}</div>
+                            <div class="draft-meta">By ${post.authorName || post.authorEmail} (${post.level || ''}) &middot; Published: ${post.date || ''}</div>
+                            <div class="draft-actions">
+                                ${userLevel === 'admin' ? `<button class="update-btn" onclick="window.editDraft('${post.key}', true)">Update</button>` : ''}
+                                <button class="view-btn" onclick="window.viewPost('${post.key}')">View</button>
+                                ${userLevel === 'admin' ? `<button class="delete-btn" onclick="window.deleteDraft('${post.key}')">Delete</button>` : ''}
+                            </div>
+                        </li>`;
+                    });
+                    html += `</ul>`;
+                }
             }
-        };
+            area.innerHTML = html;
+        }
 
-        // --- DRAFTS LOGIC (Responsive, Images at Cursor, Autosave) ---
-        let draftImages = [];
-        let draftImageCount = 0;
-        let currentDraftKey = null;
-        let draftAutoSaveTimeout = null;
-
-        window.openDraftModal = function() {
-            if (!isAdmin) {
-                alert('Only authors can create posts.');
-                return;
-            }
-            document.getElementById('draftModal').style.display = 'flex';
-            resetDraftEditor();
-            loadDraftsList();
+        // --- Draft Editor with Rich Text and Multiple Images ---
+        window.openDraftEditor = function() {
+            showDraftEditor();
         };
-
-        window.triggerInsertImage = function() {
-            document.getElementById('insertImageInput').click();
+        window.editDraft = function(key, isPublished = false) {
+            const post = (isPublished ? _allPosts : _allDrafts).find(d => d.key === key);
+            if (post) showDraftEditor(post, isPublished);
         };
-        document.getElementById('insertImageInput').onchange = async function(e) {
+        window.deleteDraft = async function(key) {
+            if (!confirm("Are you sure you want to delete this draft/post?")) return;
+            await remove(ref(db, 'posts/' + key));
+            loadUserDraftsAndPosts();
+        };
+        function showDraftEditor(post = {}, isPublished = false) {
+            _draftImages = Array.isArray(post.images) ? [...post.images] : [];
+            _draftBodyHtml = post.body || '';
+            const area = document.getElementById('draftEditorArea');
+            area.style.display = '';
+            area.innerHTML = `
+                <div class="draft-editor">
+                    <label>Title</label>
+                    <input id="draftTitleInput" value="${post.title || ''}" placeholder="Enter title">
+                    <label>Your Name (will show as author)</label>
+                    <input id="draftAuthorNameInput" value="${post.authorName || displayName || currentUser?.displayName || ''}" placeholder="Enter your name">
+                    <label>Body</label>
+                    <div class="draft-toolbar">
+                        <button type="button" onclick="window.format('bold')"><b>B</b></button>
+                        <button type="button" onclick="window.format('italic')"><i>I</i></button>
+                        <button type="button" onclick="window.format('underline')"><u>U</u></button>
+                        <button type="button" onclick="window.format('insertUnorderedList')">&#8226; List</button>
+                        <button type="button" onclick="window.format('insertOrderedList')">1. List</button>
+                        <button type="button" onclick="window.triggerDraftImageInput()">📷 Image</button>
+                    </div>
+                    <div id="draftBodyInput" contenteditable="true" style="min-height:120px;border:1px solid #ccc;border-radius:5px;padding:8px;background:#fff;margin-bottom:10px;">${_draftBodyHtml}</div>
+                    <input type="file" id="draftImageInput" accept="image/*" multiple style="display:none;">
+                    <div class="image-preview-list" id="imagePreviewList"></div>
+                    <div class="editor-actions">
+                        <button type="button" onclick="window.saveDraft('${post.key || ''}', ${isPublished})">Save</button>
+                        ${!isPublished ? `<button type="button" onclick="window.saveDraft('${post.key || ''}', true)">Publish</button>` : ''}
+                        <button type="button" onclick="window.closeDraftEditor()">Cancel</button>
+                    </div>
+                </div>
+            `;
+            renderImagePreview();
+            document.getElementById('draftImageInput').addEventListener('change', handleImageUpload);
+            document.getElementById('draftBodyInput').addEventListener('input', () => {
+                _draftBodyHtml = document.getElementById('draftBodyInput').innerHTML;
+            });
+        }
+        window.format = function(cmd) {
+            document.execCommand(cmd, false, null);
+        };
+        window.triggerDraftImageInput = function() {
+            document.getElementById('draftImageInput').click();
+        };
+        async function handleImageUpload(e) {
             const files = Array.from(e.target.files);
-            if (draftImageCount + files.length > 10) {
-                alert('Maximum 10 images per post.');
-                return;
-            }
             for (const file of files) {
-                const storageRef = sRef(storage, 'draft-images/' + Date.now() + '_' + file.name);
+                const storageRef = sRef(storage, 'post-images/' + Date.now() + '_' + file.name);
                 await uploadBytes(storageRef, file);
                 const url = await getDownloadURL(storageRef);
-                draftImages.push({url, name: file.name, storagePath: storageRef.fullPath});
-                draftImageCount++;
+                _draftImages.push({ url, name: file.name, storagePath: storageRef.fullPath });
                 insertImageAtCursor(url);
-                updateDraftImagesList();
-                autoSaveDraft();
             }
-            e.target.value = '';
-        };
+            renderImagePreview();
+        }
         function insertImageAtCursor(url) {
-            const editor = document.getElementById('draftBody');
+            const editor = document.getElementById('draftBodyInput');
             const img = document.createElement('img');
             img.src = url;
             img.style.maxWidth = '100%';
@@ -940,204 +636,128 @@
                 sel.removeAllRanges();
                 sel.addRange(range);
             }
+            _draftBodyHtml = editor.innerHTML;
         }
-
-        window.removeDraftImage = async function(url) {
-            const idx = draftImages.findIndex(img => img.url === url);
-            if (idx !== -1) {
-                try { await deleteObject(sRef(storage, draftImages[idx].storagePath)); } catch(e){}
-                draftImages.splice(idx,1);
-                draftImageCount--;
-                const imgs = document.querySelectorAll('#draftBody img[data-draft-img]');
-                imgs.forEach(img => { if(img.src === url) img.remove(); });
-                updateDraftImagesList();
-                autoSaveDraft();
-            }
-        };
-        function updateDraftImagesList() {
-            const list = document.getElementById('draftImagesList');
-            list.innerHTML = draftImages.map(img => `
-                <div class="draft-image-thumb">
-                    <img src="${img.url}">
-                    <button class="draft-image-remove" onclick="removeDraftImage('${img.url}')">&times;</button>
+        function renderImagePreview() {
+            const list = document.getElementById('imagePreviewList');
+            if (!list) return;
+            list.innerHTML = _draftImages.map((img, idx) => `
+                <div class="image-preview-item">
+                    <img src="${img.url}" alt="Image">
+                    <button class="remove-image-btn" onclick="window.removeDraftImage(${idx})">&times;</button>
                 </div>
             `).join('');
         }
-
-        function resetDraftEditor() {
-            document.getElementById('draftTitle').value = '';
-            document.getElementById('draftBody').innerHTML = '';
-            document.getElementById('featurePost').checked = false;
-            draftImages = [];
-            draftImageCount = 0;
-            currentDraftKey = null;
-            updateDraftImagesList();
-        }
-
-        function autoSaveDraft() {
-            clearTimeout(draftAutoSaveTimeout);
-            draftAutoSaveTimeout = setTimeout(saveDraftToFirebase, 1000);
-        }
-        document.getElementById('draftTitle').addEventListener('input', autoSaveDraft);
-        document.getElementById('draftBody').addEventListener('input', autoSaveDraft);
-        document.getElementById('featurePost').addEventListener('change', autoSaveDraft);
-
-        async function saveDraftToFirebase() {
-            let title = document.getElementById('draftTitle').value.trim();
-            if (!title) title = 'Untitled Draft';
-            const body = document.getElementById('draftBody').innerHTML.trim();
-            const feature = document.getElementById('featurePost').checked;
-            const images = draftImages;
-            const draft = {
+        window.removeDraftImage = function(idx) {
+            const img = _draftImages[idx];
+            _draftImages.splice(idx, 1);
+            const editor = document.getElementById('draftBodyInput');
+            if (editor) {
+                editor.innerHTML = editor.innerHTML.replace(new RegExp(`<img[^>]+src=["']${img.url}["'][^>]*>`, 'g'), '');
+                _draftBodyHtml = editor.innerHTML;
+            }
+            renderImagePreview();
+        };
+        window.saveDraft = async function(key, isPublished) {
+            const title = document.getElementById('draftTitleInput').value.trim();
+            const body = document.getElementById('draftBodyInput').innerHTML.trim();
+            const authorName = document.getElementById('draftAuthorNameInput').value.trim() || currentUser.email;
+            const now = new Date().toISOString().slice(0, 16).replace('T', ' ');
+            if (!title || !body) { alert('Title and body required.'); return; }
+            const postData = {
                 title,
                 body,
-                images,
-                feature,
-                author: authorName || 'Admin',
-                updated: new Date().toISOString()
+                date: now,
+                status: isPublished ? 'published' : 'draft',
+                authorName,
+                authorEmail: currentUser.email,
+                level: userLevel,
+                images: _draftImages
             };
-            if (currentDraftKey) {
-                await update(ref(db, 'drafts/' + currentDraftKey), draft);
+            if (key) {
+                await update(ref(db, 'posts/' + key), postData);
             } else {
-                const newRef = await push(ref(db, 'drafts'), draft);
-                currentDraftKey = newRef.key;
+                await push(ref(db, 'posts'), postData);
             }
-            loadDraftsList();
-        }
-        window.saveDraftManually = saveDraftToFirebase;
-
-        async function loadDraftsList() {
-            const list = document.getElementById('draftList');
-            const draftsRef = ref(db, 'drafts');
-            const snapshot = await get(draftsRef);
-            if (!snapshot.exists()) {
-                list.innerHTML = '<em>No drafts yet.</em>';
-                return;
-            }
-            const draftsArr = [];
-            snapshot.forEach(child => {
-                draftsArr.push({ ...child.val(), key: child.key });
+            document.getElementById('draftEditorArea').style.display = 'none';
+            loadUserDraftsAndPosts();
+        };
+        window.publishDraft = async function(key) {
+            if (!key) { alert('Save the draft first.'); return; }
+            await update(ref(db, 'posts/' + key), {
+                status: 'published',
+                date: new Date().toISOString().slice(0, 16).replace('T', ' ')
             });
-            draftsArr.sort((a, b) => new Date(b.updated) - new Date(a.updated));
-            list.innerHTML = draftsArr.map(draft => `
-                <div class="draft-list-item">
-                    <span>${draft.title} <small style="color:#888;">(${new Date(draft.updated).toLocaleString()})</small></span>
-                    <span>
-                        <button class="edit-btn" onclick="editDraft('${draft.key}')">Edit</button>
-                        <button class="delete-btn" onclick="deleteDraft('${draft.key}')">Delete</button>
-                    </span>
-                </div>
-            `).join('');
-        }
-
-        window.editDraft = async function(key) {
-            const draftRef = ref(db, 'drafts/' + key);
-            const snap = await get(draftRef);
-            if (!snap.exists()) return;
-            const draft = snap.val();
-            document.getElementById('draftTitle').value = draft.title;
-            document.getElementById('draftBody').innerHTML = draft.body;
-            document.getElementById('featurePost').checked = !!draft.feature;
-            draftImages = draft.images || [];
-            draftImageCount = draftImages.length;
-            currentDraftKey = key;
-            updateDraftImagesList();
+            document.getElementById('draftEditorArea').style.display = 'none';
+            loadUserDraftsAndPosts();
+        };
+        window.closeDraftEditor = function() {
+            document.getElementById('draftEditorArea').style.display = 'none';
         };
 
-        window.deleteDraft = async function(key) {
-            if (!confirm('Delete this draft?')) return;
-            const draftRef = ref(db, 'drafts/' + key);
-            const snap = await get(draftRef);
-            if (snap.exists() && snap.val().images) {
-                for (const img of snap.val().images) {
-                    try { await deleteObject(sRef(storage, img.storagePath)); } catch(e){}
-                }
-            }
-            await remove(draftRef);
-            if (currentDraftKey === key) resetDraftEditor();
-            loadDraftsList();
+        window.viewPost = function(key) {
+            alert('View post: ' + key + '\n(You can implement a preview or redirect here.)');
         };
-
-        window.publishDraft = async function() {
-            let title = document.getElementById('draftTitle').value.trim();
-            if (!title) title = 'Untitled Draft';
-            const body = document.getElementById('draftBody').innerHTML.trim();
-            const feature = document.getElementById('featurePost').checked;
-            const images = draftImages;
-            if (!body) {
-                alert('Body is required.');
-                return;
-            }
-            if (feature) {
-                const postsRef = ref(db, 'posts');
-                const snapshot = await get(postsRef);
-                snapshot.forEach(child => {
-                    if (child.val().feature === true || child.val().feature === "true") {
-                        update(ref(db, 'posts/' + child.key), { feature: false });
-                    }
-                });
-            }
-            let finalBody = body;
-            const post = {
-                title,
-                body: finalBody,
-                images,
-                date: new Date().toISOString(),
-                author: authorName || 'Admin',
-                feature: !!feature,
-                likes: 0
-            };
-            await push(ref(db, 'posts'), post);
-            if (currentDraftKey) {
-                await deleteDraft(currentDraftKey);
-                resetDraftEditor();
-            }
-            loadPosts();
-            loadDraftsList();
-            alert('Post published!');
-        };
-
-        // --- Rich Text Editor ---
-        window.format = function(cmd, value=null) {
-            document.execCommand(cmd, false, value);
-        };
-
-        // --- Comments, Likes, Share, etc. (unchanged from previous) ---
-        // ...existing code for comments, likes, share, emoji picker, etc...
-
-        // --- Emoji Picker ---
-        window.openEmojiPicker = function(textareaId) {
-            if (window.emojiPicker) window.emojiPicker.remove();
-            const picker = document.createElement('emoji-picker');
-            picker.style.position = 'absolute';
-            picker.style.zIndex = 9999;
-            picker.addEventListener('emoji-click', e => {
-                const textarea = document.getElementById(textareaId);
-                textarea.value += e.detail.unicode;
-                picker.remove();
-            });
-            document.body.appendChild(picker);
-            const textarea = document.getElementById(textareaId);
-            const rect = textarea.getBoundingClientRect();
-            picker.style.left = rect.left + 'px';
-            picker.style.top = (rect.bottom + window.scrollY) + 'px';
-            window.emojiPicker = picker;
-        };
-        document.addEventListener('click', e => {
-            if (window.emojiPicker && !e.target.closest('emoji-picker') && !e.target.classList.contains('emoji-btn')) {
-                window.emojiPicker.remove();
-            }
-        });
 
         // --- Modal Close on Outside Click ---
         window.onclick = function(event) {
-            if (event.target.classList.contains('login-modal')) event.target.style.display = 'none';
-            if (event.target.classList.contains('draft-modal')) event.target.style.display = 'none';
-            if (event.target.classList.contains('full-post-modal')) event.target.style.display = 'none';
+            if (event.target.classList.contains('login-modal')) event.target.classList.remove('active');
+            if (event.target.classList.contains('draft-modal')) closeDraftModal();
         };
 
-        // --- Initial Load ---
-        loadPosts();
+        // --- PUBLIC BLOG: Load and Render Published Posts ---
+        async function loadAndRenderPublishedPosts() {
+            const postsRef = ref(db, 'posts');
+            const snapshot = await get(postsRef);
+            let posts = [];
+            if (snapshot.exists()) {
+                snapshot.forEach(child => {
+                    const post = { ...child.val(), key: child.key };
+                    if (post.status === 'published') posts.push(post);
+                });
+            }
+            posts.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+            renderPublishedPosts(posts);
+        }
+
+        function renderPublishedPosts(posts) {
+            const container = document.getElementById('postsContainer');
+            if (!container) return;
+            if (!posts.length) {
+                container.innerHTML = `<div style="color:#888;text-align:center;margin:40px 0;">No posts yet.</div>`;
+                return;
+            }
+            container.innerHTML = posts.map(post => `
+                <div class="post-card">
+                    <div class="post-title">${post.title || ''}</div>
+                    <div class="post-meta">By ${post.authorName || post.authorEmail} (${post.level || ''}) &middot; ${post.date || ''}</div>
+                    <div class="post-body">${post.body || ''}</div>
+                </div>
+            `).join('');
+        }
+
+        // --- Search Functionality ---
+        document.getElementById('searchInput').addEventListener('input', async function() {
+            const query = this.value.trim().toLowerCase();
+            const postsRef = ref(db, 'posts');
+            const snapshot = await get(postsRef);
+            let posts = [];
+            if (snapshot.exists()) {
+                snapshot.forEach(child => {
+                    const post = { ...child.val(), key: child.key };
+                    if (post.status === 'published') posts.push(post);
+                });
+            }
+            if (query) {
+                posts = posts.filter(post => (post.title || '').toLowerCase().includes(query));
+            }
+            posts.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+            renderPublishedPosts(posts);
+        });
+
+        // --- Initial Load: Show published posts to everyone ---
+        loadAndRenderPublishedPosts();
+
     </script>
     <script src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.min.js" type="module"></script>
 </body>
