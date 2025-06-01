@@ -938,13 +938,16 @@ async function loadAllPosts(reset = true) {
         return;
     }
     // Render featured post
-    if (reset && pagePosts.length > 0 && pagePosts[0].featured) {
-        featureSection.innerHTML = renderFeaturePost(pagePosts[0]);
-        pagePosts.shift();
+    if (reset) {
+    const featuredIdx = pagePosts.findIndex(p => p.featured);
+    if (featuredIdx !== -1) {
+        featureSection.innerHTML = renderFeaturePost(pagePosts[featuredIdx]);
+        pagePosts.splice(featuredIdx, 1); // Remove featured from list
+    }
     }
     // Render posts
     pagePosts.forEach(post => {
-        postsContainer.innerHTML += renderPostCard(post);
+    postsContainer.innerHTML += renderPostCard(post);
     });
     // Save last loaded key for pagination
     if (pagePosts.length > 0) {
